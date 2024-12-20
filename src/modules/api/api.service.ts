@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common'
-import type { response } from './type'
+import type { response } from '../../type'
 
 @Injectable()
-export class AppService {
+export class ApiService {
   getHello(): response<string> {
     return { msg: 'ok', data: 'Hello World!' }
   }
-  postTest(): string {
-    return '这是测试的回复!'
+  getTest(num?: number): string {
+    return generateRandomString(num || 16)
   }
 }
 
-export const generateRandomString = (length: number): string => {
+const generateRandomString = (length: number): string => {
   let result: string = ''
   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   let charactersLength = characters.length

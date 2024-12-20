@@ -1,2 +1,2 @@
 # node-nest
-学习nest版本node后端服务，常用express。
+自己的node后端服务-nest版
