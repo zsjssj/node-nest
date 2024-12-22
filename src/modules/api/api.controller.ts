@@ -4,7 +4,7 @@ import { ApiService } from './api.service'
 import { GetTestQueryDto } from '../../dto/get-query.dto'
 import type { response } from '../../type'
 
-@Controller('/api')
+@Controller('api')
 export class ApiController {
   constructor(
     private readonly appService: AppService,
@@ -20,6 +20,7 @@ export class ApiController {
     console.log(data)
     return { data: this.apiService.getTest(data), msg: 'ok' }
   }
+
   @Get('/test2')
   getTestQuerry(@Query() querry: GetTestQueryDto): response<Array<string>> {
     const arr = []
