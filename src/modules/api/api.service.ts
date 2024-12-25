@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import type { response } from '../../type'
+import type { response } from '@/type'
 
 @Injectable()
 export class ApiService {
