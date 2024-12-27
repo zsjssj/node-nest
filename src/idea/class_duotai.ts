@@ -1,3 +1,5 @@
+import { type } from 'os'
+
 function login(phone: string) {
   return `${phone} login success`
 }
@@ -36,6 +38,9 @@ const loginMap = {
   dingTalk: DingTalkLogin,
   weChat: WeChatLogin,
 }
+
+console.log(' typeof loginMap', typeof loginMap)
+
 function loginFactory(type: keyof typeof loginMap) {
   return new loginMap[type]()
 }
