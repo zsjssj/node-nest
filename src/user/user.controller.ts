@@ -1,17 +1,49 @@
-import { Controller, Get, Post } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, Session } from '@nestjs/common'
 import { UserService } from './user.service'
-import type { response } from '@/type'
+import { CreateUserDto } from './dto/create-user.dto'
+import { UpdateUserDto } from './dto/update-user.dto'
+import { log } from 'console'
 
-@Controller('user')
+@Controller({ path: 'user', version: '1' })
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
+
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto)
+  }
 
   @Get()
-  getUser(): response<string> {
-    return { data: 'Hello World!', msg: 'ok' }
+  findAll() {
+    return this.userService.findAll()
   }
-  @Post('login')
-  login(): response<string> {
-    return { data: 'js-jwt,', msg: 'ok' }
+
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.userService.findOne(+id)
+  // }
+
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  //   return this.userService.update(+id, updateUserDto)
+  // }
+
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.userService.remove(+id)
+  // }
+
+  @Get('code')
+  createCode(@Req() req, @Res() res, @Session() session) {
+    const captcha = this.userService.createCode()
+    session.code = captcha.text
+    res.type('image/svg+xml')
+    res.send(captcha.data)
+  }
+
+  @Post('create')
+  createUser(@Body() body, @Session() session) {
+    console.log(body, session.code)
+    return { msg: 'ok', code: 200 }
   }
 }

@@ -4,7 +4,7 @@ import { GetTestQueryDto } from '@/common/dto/get-query.dto'
 import { ConfigService } from '@nestjs/config'
 import type { response } from '@/type'
 
-@Controller('api')
+@Controller({ path: 'api', version: '1' })
 export class ApiController {
   constructor(
     private readonly apiService: ApiService,
@@ -16,7 +16,7 @@ export class ApiController {
     return { data: 'Hello World!', msg: 'ok' }
   }
 
-  @Get('/test1/:data')
+  @Get('/test1/:length')
   getTestParam(@Param('data') data: number): response<string> {
     console.log('db', this.configService.get('DB'))
     console.log(data)
