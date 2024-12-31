@@ -13,10 +13,19 @@ async function bootstrap() {
 
   app.enableVersioning({ type: VersioningType.URI })
   app.setGlobalPrefix('api')
+  app.use(
+    session({
+      secret: 'ssje',
+      rolling: true,
+      name: 'ssje.sid',
+      cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 },
+    }),
+  )
+
   app.useStaticAssets(path.join(__dirname, '..', 'public'), {
     prefix: '/static/',
   })
-  app.use(session({ secret: 'ssje', rolling: true, name: 'ssje.sid', cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 } }))
+
   app.useStaticAssets(path.join(__dirname, '..', 'public/map'), {
     prefix: '/map',
     maxAge: 1000 * 60 * 60 * 24 * 30,
