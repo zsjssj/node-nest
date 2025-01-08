@@ -2,8 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, Session } 
 import { UserService } from './user.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
-import { log } from 'console'
-
+import { Request, Response } from 'express'
 @Controller({ path: 'user', version: '1' })
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -34,7 +33,7 @@ export class UserController {
   // }
 
   @Get('code')
-  createCode(@Req() req, @Res() res, @Session() session) {
+  createCode(@Req() req: Request, @Res() res: Response, @Session() session: Record<string, any>) {
     const captcha = this.userService.createCode()
     session.code = captcha.text
     res.type('image/svg+xml')
