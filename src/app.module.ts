@@ -12,6 +12,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
   controllers: [AppController],
   imports: [
     ApiModule,
+    UserModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath,
@@ -23,7 +24,6 @@ const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
         SERVER_PORT: Joi.number().default(3000),
       }),
     }),
-    UserModule,
   ],
 
   providers: [ApiService],

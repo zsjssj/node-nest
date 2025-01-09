@@ -10,24 +10,27 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
   const port = process.env.SERVER_PORT
   const ip = process.env.SERVER_HOST
+  // app.enableVersioning({ type: VersioningType.URI })
+  // app.setGlobalPrefix('api')
 
-  app.enableVersioning({ type: VersioningType.URI })
-  app.setGlobalPrefix('api')
   app.use(
     session({
       secret: 'ssje',
       rolling: true,
-      name: 'ssje.sid',
+      name: 'ssje_jwt',
+      resave: false,
+      saveUninitialized: false,
       cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 },
     }),
   )
 
   app.useStaticAssets(path.join(__dirname, '..', 'public'), {
     prefix: '/static/',
+    maxAge: 1000 * 60 * 60 * 24 * 30,
   })
 
   app.useStaticAssets(path.join(__dirname, '..', 'public/map'), {
-    prefix: '/map',
+    prefix: '/map/',
     maxAge: 1000 * 60 * 60 * 24 * 30,
   })
 

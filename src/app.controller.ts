@@ -8,7 +8,7 @@ export class AppController {
   @Get('/')
   getHello(): response<any> {
     this.userService.createCode()
-    // return { msg: 'ok', data: 'Hello World!' }
-    return { data: this.userService.createCode(), msg: 'ok' }
+    return { msg: 'ok', data: 'Hello World!' }
+    // return { data: this.userService.createCode(), msg: 'ok' }
   }
 }
