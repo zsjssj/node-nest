@@ -18,6 +18,7 @@ interface Person {
 
 type NameAndAge1 = Pick<Person, 'name' | 'age'>
 type NameAndAge2 = Omit<Person, 'email' | 'age'>
-const a1: NameAndAge1 = { name: 'a', age: 1 }
-const a2: NameAndAge2 = { name: 'a' }
+const index_a1: NameAndAge1 = { name: 'a', age: 1 }
+const index_a2: NameAndAge2 = { name: 'a' }
 // NameAndAge 的类型是 { name: string; age: number; }
+console.log(index_a1, index_a2)

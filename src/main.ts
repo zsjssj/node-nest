@@ -33,8 +33,10 @@ async function bootstrap() {
     prefix: '/map/',
     maxAge: 1000 * 60 * 60 * 24 * 30,
   })
-
-  await app.listen(port, ip)
-  console.log(`server服务地址: ${await app.getUrl()}`)
+  await app.listen(port, '0.0.0.0')
+  const url = await app.getUrl()
+  console.log(`server服务地址: ${url}`)
 }
 bootstrap()
+
+//"start:dev": "cross-env NODE_ENV=development nest start --watch",
