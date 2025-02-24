@@ -10,3 +10,13 @@ console.log(arr2 instanceof Array, arr2 instanceof Object, Array.isArray(arr2))
 console.log(arr2)
 
 console.log(!null, !undefined, !!null, !!undefined)
+
+const a1 = () => {
+  console.log('a1')
+}
+const a2 = () => {
+  console.log('a2')
+}
+console.log(!({} instanceof Object))
+
+1 > 2 ? a1() : a2()
