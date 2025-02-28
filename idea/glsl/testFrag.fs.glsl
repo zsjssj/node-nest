@@ -319,7 +319,7 @@ float BinarySubdivision(in vec3 rO, in vec3 rD, float t, float oldT)
 //--------------------------------------------------------------------------
 bool Scene(in vec3 rO, in vec3 rD, out float resT, out float type )
 {
-    float t = 5.;
+  float t = 5.;
 	float oldT = 0.0;
 	float delta = 0.;
 	vec2 h = vec2(1.0, 1.0);
