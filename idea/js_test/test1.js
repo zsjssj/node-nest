@@ -20,3 +20,6 @@ const a2 = () => {
 console.log(!({} instanceof Object))
 
 1 > 2 ? a1() : a2()
+
+console.log(Object.prototype.toString.call({}), Object.prototype.toString.call([]))
+console.log(Array.isArray({}), Array.isArray([]))

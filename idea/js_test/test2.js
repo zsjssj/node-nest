@@ -1,6 +1,3 @@
-const { log } = require('console')
-const { object } = require('joi')
-
 //1.this指向
 ;() => {
   const a1 = 10
@@ -115,14 +112,16 @@ const { object } = require('joi')
 ;() => {
   const a1 = [2, 3, 5, 1, 6]
   const res1 = a1.reduce((pre, cur) => {
-    console.log('pre, cur', pre, cur)
     return pre + cur
   })
-  const res2 = a1.reduce((pre, cur, index) => {
+  const res2 = a1.reduce((pre, cur) => {
+    return pre + cur
+  }, 0)
+  const res3 = a1.reduce((pre, cur, index) => {
     pre[index] = cur
     return pre
   }, {})
-  console.log('reduce', res1, res2)
+  console.log('reduce', res1, res2, res3)
 }
 
 //7.数组,对象类型判断
@@ -131,7 +130,7 @@ const { object } = require('joi')
   console.log(Array.isArray({}), Array.isArray([]))
 }
 
-//柯里化函数
+//8.柯里化函数
 ;() => {
   function curry(...args) {
     let parrms = args
@@ -149,8 +148,8 @@ const { object } = require('joi')
   console.log(curryAdd)
 }
 
-//once函数
-;(() => {
+//9.once函数
+;() => {
   function once(fn) {
     let done = false
     return (...args) => {
@@ -165,4 +164,39 @@ const { object } = require('joi')
   })
   handleOnce(12)
   handleOnce(3)
+}
+
+//10.两数组合并，默认排序
+;(() => {
+  const a1 = [1, 3, 4, 7, 8, 9, 12, 13, 15, 18]
+  const a2 = [22, 23, 44, 45, 54]
+  console.time('conca1')
+  const res1 = a1.concat(a2).sort((a, b) => a - b)
+  console.timeEnd('conca1')
+
+  console.time('conca2')
+  const res2 = [...a1, ...a2].sort((a, b) => a - b)
+  console.timeEnd('conca2')
+
+  console.time('conca3')
+  const res3 = []
+  let index1 = 0,
+    index2 = 0
+  while (index1 < a1.length || index2 < a2.length) {
+    if (index1 >= a1.length) {
+      res3.push(a2[index2]), index2++
+      continue
+    } else if (index2 >= a2.length) {
+      res3.push(a1[index1]), index1++
+      continue
+    } else {
+      if (a1[index1] < a2[index2]) {
+        res3.push(a1[index1]), index1++
+      } else {
+        res3.push(a2[index2]), index2++
+      }
+    }
+  }
+  console.timeEnd('conca3')
+  // console.log('res', '\n', res1, '\n', res2, '\n', res3)
 })()

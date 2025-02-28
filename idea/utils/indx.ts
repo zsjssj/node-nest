@@ -55,3 +55,29 @@ export const transferToNumber = (inputNumber: number) => {
   const number = inputNumber.toFixed(Math.max(0, (tmpArray[1] || '').length - parseInt(tmpArray[2])))
   return number
 }
+
+//空间换时间,两数组合并排序
+;() => {
+  console.time('conca3')
+  const a1: Array<number> = [1, 3, 4, 7, 8, 9, 12, 13, 15, 18]
+  const a2: Array<number> = [22, 23, 44, 45, 54]
+  const res3: Array<number> = []
+  let index1 = 0,
+    index2 = 0
+  while (index1 < a1.length || index2 < a2.length) {
+    if (index1 >= a1.length) {
+      res3.push(a2[index2]), index2++
+      continue
+    } else if (index2 >= a2.length) {
+      res3.push(a1[index1]), index1++
+      continue
+    } else {
+      if (a1[index1] < a2[index2]) {
+        res3.push(a1[index1]), index1++
+      } else {
+        res3.push(a2[index2]), index2++
+      }
+    }
+  }
+  console.timeEnd('conca3')
+}
