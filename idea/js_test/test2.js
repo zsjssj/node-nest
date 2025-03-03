@@ -1,6 +1,3 @@
-const { timeEnd } = require('console')
-const { object } = require('joi')
-
 //1.this指向
 ;() => {
   const a1 = 10
@@ -68,7 +65,7 @@ const { object } = require('joi')
 }
 
 //5.defineProperty
-;(() => {
+;() => {
   //5.1-es5
   function Product(name, value, num) {
     this.name = name
@@ -109,7 +106,7 @@ const { object } = require('joi')
   const a3 = new Product2('a3', 30, 2)
   a3.num = 5
   console.log('a3.totalValue', a3.totalValue)
-})()
+}
 
 //6.reduce
 ;() => {
@@ -127,7 +124,49 @@ const { object } = require('joi')
   console.log('reduce', res1, res2, res3)
 }
 
-//7.两数组合并，默认排序
+//7.数组,对象类型判断
+;() => {
+  console.log(Object.prototype.toString.call({}), Object.prototype.toString.call([]))
+  console.log(Array.isArray({}), Array.isArray([]))
+}
+
+//8.柯里化函数
+;() => {
+  function curry(...args) {
+    let parrms = args
+    const addFn = (...args2) => {
+      parrms = parrms.concat(args2)
+      return addFn
+    }
+    addFn.valueof = () => {
+      return parrms.reduce((pre, cur) => pre + cur)
+    }
+    return addFn
+  }
+
+  const curryAdd = curry(1, 2, 3)(4)(5)(6).valueof()
+  console.log(curryAdd)
+}
+
+//9.once函数
+;() => {
+  function once(fn) {
+    let done = false
+    return (...args) => {
+      if (!done) {
+        done = true
+        return fn(...args)
+      }
+    }
+  }
+  const handleOnce = once(a => {
+    console.log('once', a)
+  })
+  handleOnce(12)
+  handleOnce(3)
+}
+
+//10.两数组合并，默认排序
 ;(() => {
   const a1 = [1, 3, 4, 7, 8, 9, 12, 13, 15, 18]
   const a2 = [22, 23, 44, 45, 54]
