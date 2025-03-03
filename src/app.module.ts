@@ -2,11 +2,13 @@ import { Module } from '@nestjs/common'
 import { ApiService } from './modules/api/api.service'
 import { ConfigModule } from '@nestjs/config'
 import { ServeStaticModule } from '@nestjs/serve-static'
+import { TypeOrmModule } from '@nestjs/typeorm'
 import { ApiModule } from './modules/api/api.module'
 import { UserModule } from './user/user.module'
 import * as Joi from 'joi'
 import * as path from 'path'
 import { AppController } from './app.controller'
+import { PostgreSqlModule } from './postgre-sql/postgre-sql.module'
 
 const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
 
@@ -26,6 +28,17 @@ const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
         SERVER_PORT: Joi.number().default(3000),
       }),
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: 'localhost',
+    //   port: 5432,
+    //   username: 'your_user',
+    //   password: '521421',
+    //   database: 'your_db',
+    //   entities: [__dirname + '/**/*.entity{.ts,.js}'], // 自动加载实体
+    //   synchronize: true, // 生产环境建议关闭
+    // }),
+    // PostgreSqlModule,
     // // 配置不同路径下的静态资源
     // ServeStaticModule.forRoot({
     //   rootPath: path.join(__dirname, '..', 'public'), // 默认静态资源

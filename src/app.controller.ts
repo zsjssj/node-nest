@@ -8,6 +8,8 @@ export class AppController {
   @Get('/')
   getHello(): response<any> {
     this.userService.createCode()
+    console.log('start userService')
+
     return { msg: 'ok', data: 'Hello World!' }
     // return { data: this.userService.createCode(), msg: 'ok' }
   }

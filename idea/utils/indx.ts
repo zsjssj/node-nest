@@ -71,12 +71,11 @@ export const transferToNumber = (inputNumber: number) => {
     } else if (index2 >= a2.length) {
       res3.push(a1[index1]), index1++
       continue
+    }
+    if (a1[index1] < a2[index2]) {
+      res3.push(a1[index1]), index1++
     } else {
-      if (a1[index1] < a2[index2]) {
-        res3.push(a1[index1]), index1++
-      } else {
-        res3.push(a2[index2]), index2++
-      }
+      res3.push(a2[index2]), index2++
     }
   }
   console.timeEnd('conca3')

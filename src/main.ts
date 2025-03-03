@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { VersioningType } from '@nestjs/common'
+import * as cookieParser from 'cookie-parser'
 import * as path from 'path'
 import * as session from 'express-session'
 
@@ -13,6 +14,7 @@ async function bootstrap() {
   // app.enableVersioning({ type: VersioningType.URI })
   // app.setGlobalPrefix('api')
 
+  app.use(cookieParser()) // 使用 cookie-parser 中间件
   app.use(
     session({
       secret: 'ssje',
