@@ -28,16 +28,16 @@ const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
         SERVER_PORT: Joi.number().default(3000),
       }),
     }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'localhost',
-    //   port: 5432,
-    //   username: 'your_user',
-    //   password: '521421',
-    //   database: 'your_db',
-    //   entities: [__dirname + '/**/*.entity{.ts,.js}'], // 自动加载实体
-    //   synchronize: true, // 生产环境建议关闭
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: '521421',
+      database: 'postgres',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'], // 自动加载实体
+      synchronize: true, // 生产环境建议关闭
+    }),
     // PostgreSqlModule,
     // // 配置不同路径下的静态资源
     // ServeStaticModule.forRoot({

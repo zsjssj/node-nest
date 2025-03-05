@@ -1,5 +1,3 @@
-import { type } from 'os'
-
 function login(phone: string) {
   return `${phone} login success`
 }
