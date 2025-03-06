@@ -38,7 +38,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // 自动加载实体
       synchronize: true, // 生产环境建议关闭
     }),
-    // PostgreSqlModule,
+    PostgreSqlModule,
     // // 配置不同路径下的静态资源
     // ServeStaticModule.forRoot({
     //   rootPath: path.join(__dirname, '..', 'public'), // 默认静态资源

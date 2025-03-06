@@ -38,6 +38,7 @@ export class UserController {
     session.code = captcha.text
     res.type('image/svg+xml')
     res.send(captcha.data)
+    console.log('/user/code', 1)
   }
 
   @Post('create')
