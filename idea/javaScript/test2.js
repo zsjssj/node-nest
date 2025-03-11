@@ -166,8 +166,8 @@
   handleOnce(3)
 }
 
-//10.两数组合并，默认排序
-;(() => {
+//10.两个排序数组合并，默认排序
+;() => {
   const a1 = [1, 3, 4, 7, 8, 9, 12, 13, 15, 18]
   const a2 = [22, 23, 44, 45, 54]
   console.time('conca1')
@@ -199,23 +199,28 @@
   }
   console.timeEnd('conca3')
   // console.log('res', '\n', res1, '\n', res2, '\n', res3)
-})()
-
-//8.二进制位运算
-;() => {
-  const a1 = 0b111
-  const a2 = 0b100
-  const a3 = a1 | a2
-  const a4 = a1 & a2
-  console.log(a3, a4)
-  console.log(a3.toString(2), a4.toString(2))
 }
 
-//9.??空值合并运算符
+//8.二进制位运算
 ;(() => {
+  const a1 = 0b111
+  const a2 = 0b000
+  const a3 = a1 | a2
+  const a4 = a1 & a2
+  console.log(!!a3, !!a4)
+  console.log(a3.toString(2), a4.toString(2))
+})()
+
+//9.??空值合并运算符
+;() => {
   const a1 = null ?? 3
   const a2 = undefined ?? 3
   const a3 = '' ?? 3
   const a4 = 0 ?? 3
   console.log(a1, a2, a3, a4)
+}
+;(() => {
+  if (0) console.log(1)
+  else console.log(0)
 })()
+

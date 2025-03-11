@@ -13,6 +13,19 @@ function ref<T>(value: T) {
   })
 }
 
+function reactive<T extends Array<any> | object>(obj: T) {
+  return new Proxy(obj, {
+    get(target, key) {
+      return target[key]
+    },
+    set(target, key, value) {
+      console.log('set', key, value)
+      target[key] = value
+      return true
+    },
+  })
+}
+
 function useLoading(data: string) {
   const loading = ref<boolean>(false)
   const loadTitle = ref<string>('')
