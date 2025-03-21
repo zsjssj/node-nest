@@ -47,3 +47,18 @@ function useLoading(data: string) {
   setLoading('加载中1...')
   console.log('loading', loading.value, loadTitle.value)
 }
+
+
+// import { ComponentInternalInstance, getCurrentInstance } from 'vue'
+interface ComponentInternalInstance {appContext: any}
+function getCurrentInstance(): ComponentInternalInstance {
+  return { appContext: '' }
+}
+//获取当前实例
+export function useCurrentInstance() {
+  const { appContext } = getCurrentInstance() as ComponentInternalInstance
+  const proxy = appContext.config.globalProperties
+  return {
+    proxy
+  }
+}

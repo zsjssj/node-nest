@@ -37,7 +37,7 @@ Object.keys(index_a3).forEach((key: IndexA3Key) => {
 //简单的装饰器1
 function ssjeLog() {
   console.log('f(): evaluated')
-  return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+  return function (target:any, propertyKey: string, descriptor: PropertyDescriptor) {
     console.log('target, propertyKey, descriptor', target, propertyKey, descriptor)
   }
 }
@@ -50,18 +50,18 @@ class IndexA5 {
 const index_a51 = new IndexA5()
 // index_a51.index_a5_handle('test')
 
-function ssjeLog2(target, propertyName, descriptor) {
-  console.log('target', target, propertyName, descriptor)
-  descriptor.value = function () {
-    console.log('index_a52_handle2测试装饰器111111111111')
-  }
-}
-class IndexA52 {
-  @ssjeLog2
-  index_a52_handle(data: any) {
-    console.log('index_a52_handle测试装饰器', data)
-  }
-  index_a52_handle2() {}
-}
-const index_a53 = new IndexA52()
-index_a53.index_a52_handle('test52')
+// function ssjeLog2(target, propertyName, descriptor) {
+//   console.log('target', target, propertyName, descriptor)
+//   descriptor.value = function () {
+//     console.log('index_a52_handle2测试装饰器111111111111')
+//   }
+// }
+// class IndexA52 {
+//   @ssjeLog2
+//   index_a52_handle(data: any) {
+//     console.log('index_a52_handle测试装饰器', data)
+//   }
+//   index_a52_handle2() {}
+// }
+// const index_a53 = new IndexA52()
+// index_a53.index_a52_handle('test52')

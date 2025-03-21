@@ -1,8 +1,9 @@
 //1.this指向
+a1 = 10
 ;() => {
   const a1 = 10
   const aa = {
-    a1: 1,
+    a1: 1111,
     handleA1() {
       const a2 = this.a1
       console.log(this.a1, a2)
@@ -202,14 +203,14 @@
 }
 
 //8.二进制位运算
-;(() => {
+;() => {
   const a1 = 0b111
   const a2 = 0b000
   const a3 = a1 | a2
   const a4 = a1 & a2
   console.log(!!a3, !!a4)
   console.log(a3.toString(2), a4.toString(2))
-})()
+}
 
 //9.??空值合并运算符
 ;() => {
@@ -219,8 +220,58 @@
   const a4 = 0 ?? 3
   console.log(a1, a2, a3, a4)
 }
-;(() => {
-  if (0) console.log(1)
-  else console.log(0)
-})()
+//10.数组去重
+;() => {
+  function unique1(arr) {
+    return Array.from(new Set(arr))
+  }
+  function unique2(arr) {
+    return arr.filter((item, index) => arr.indexOf(item) === index)
+  }
+  function unique3(arr) {
+    return arr.reduce((prev, cur) => (prev.includes(cur) ? prev : [...prev, cur]), [])
+  }
+  const a1 = [1, 2, 3, 4, 5, 1, 2, 3]
+  console.time('unique1')
+  const arr1 = unique1(a1)
+  console.timeEnd('unique1')
+  console.time('unique2')
+  const arr2 = unique2(a1)
+  console.timeEnd('unique2')
+  console.time('unique3')
+  const arr3 = unique3(a1)
+  console.timeEnd('unique3')
+  console.log(arr1, arr2, arr3)
+}
 
+//11.拆分Promise各过程执行时机
+;() => {
+  const nativePromiseWithExtractedComponents = () => {
+    let resolver
+    let rejecter
+    const promise = new Promise((resolve, reject) => {
+      resolver = resolve
+      rejecter = reject
+    })
+    return {
+      promise: promise,
+      resolve: resolver,
+      reject: rejecter,
+    }
+  }
+  const a1 = nativePromiseWithExtractedComponents()
+  a1.resolve(222)
+  a1.promise.then(a2 => {
+    console.log('a2', a2)
+  })
+}
+
+//12
+;(() => {
+  // const shFieldIndexesToMap = Array.from(Array(Math.max(45 - 1, 0)))
+  // console.log(shFieldIndexesToMap)
+  const aa = new Map()
+  aa.set('a', 1)
+  aa.set('b', 2)
+  console.log(aa.get('a'))
+})()
