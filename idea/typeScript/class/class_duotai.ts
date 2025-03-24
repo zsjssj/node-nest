@@ -37,6 +37,7 @@ const loginMap = {
   weChat: WeChatLogin,
 }
 
+type aa = typeof loginMap
 console.log(' typeof loginMap', typeof loginMap)
 
 function loginFactory(type: keyof typeof loginMap) {

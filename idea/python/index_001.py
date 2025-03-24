@@ -10,3 +10,4 @@ class ZsjUtil:
 a3 = ZsjUtil('asas1')
 print(a3.name,a3.age)
 
+
