@@ -1,5 +1,5 @@
 /**
- * @description: 从底部到顶部的动画
+ * @description: 一个竖排列元素，从底部进入可见视口时候，向上滑动的动画
  */
 
 const OFFSET = 100
@@ -29,14 +29,8 @@ const vBottom_top = {
     if (!belowViewport(el)) return
     const animation = el.animate(
       [
-        {
-          transform: `translateY(${OFFSET}px)`,
-          opacity: 0,
-        },
-        {
-          transform: `translateY(0)`,
-          opacity: 0,
-        },
+        { transform: `translateY(${OFFSET}px)`, opacity: 0 },
+        { transform: `translateY(0)`, opacity: 0 },
       ],
       { duration: DURATION, easing: 'ease-out', fill: 'forwards' },
     )
