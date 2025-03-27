@@ -1,26 +1,27 @@
 //仿写vue3的ref
 function ref<T>(value: T) {
-  const obj = { value }
-  return new Proxy(obj, {
-    get(target, key) {
-      return <T>target[key]
+  return new Proxy(
+    { value },
+    {
+      get(target, key, receiver) {
+        return Reflect.get(target, key, receiver)
+      },
+      set(target, key, value: T, receiver) {
+        Reflect.set(target, key, value, receiver)
+        return true
+      },
     },
-    set(target, key, value: T) {
-      console.log('set', key, value)
-      target[key] = value
-      return true
-    },
-  })
+  )
 }
 
 function reactive<T extends Array<any> | object>(obj: T) {
   return new Proxy(obj, {
-    get(target, key) {
-      return target[key]
+    get(target, key, receiver) {
+      return Reflect.get(target, key, receiver)
     },
-    set(target, key, value) {
-      console.log('set', key, value)
+    set(target, key, value, receiver) {
       target[key] = value
+      Reflect.set(target, key, value, receiver)
       return true
     },
   })
@@ -38,19 +39,20 @@ function useLoading(data: string) {
       loading.value = value1
     }
   }
-  return { loading, loadTitle, setLoading }
+  return [loading, loadTitle, setLoading] as const
 }
 //1.
-;() => {
-  const { loading, loadTitle, setLoading } = useLoading('加载中...')
+;(() => {
+  const [loading, loadTitle, setLoading] = useLoading('加载中...')
   console.log('loading', loading.value, loadTitle.value)
   setLoading('加载中1...')
   console.log('loading', loading.value, loadTitle.value)
-}
-
+})()
 
 // import { ComponentInternalInstance, getCurrentInstance } from 'vue'
-interface ComponentInternalInstance {appContext: any}
+interface ComponentInternalInstance {
+  appContext: any
+}
 function getCurrentInstance(): ComponentInternalInstance {
   return { appContext: '' }
 }
@@ -59,6 +61,6 @@ export function useCurrentInstance() {
   const { appContext } = getCurrentInstance() as ComponentInternalInstance
   const proxy = appContext.config.globalProperties
   return {
-    proxy
+    proxy,
   }
 }

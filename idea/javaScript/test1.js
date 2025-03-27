@@ -70,4 +70,21 @@ const a22 = ref2(obj1)
 a22.a = 4
 a22.a = 5
 a22.d.a1 = 5
-console.log(a22.a, a22.d)
+
+const test1 = (() => {
+  let status = true
+  return () => {
+    return callback => {
+      if (!status) return
+      typeof callback === 'function' && callback()
+      status = false
+      setTimeout(() => {
+        status = true
+      }, 1000)
+    }
+  }
+})()
+
+const t1 = test1()
+const t2 = test1()
+const t3 = test1()
