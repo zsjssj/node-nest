@@ -9,7 +9,7 @@ from itertools import chain
 def fl_xz(wenjian,outwenjian,shuliang,jingdu,boduan):
     star = time.time()
     img = io.imread(wenjian)
-    img=img.transpose((1, 2, 0))//格式转换
+    # img=img.transpose((1, 2, 0))//格式转换
     leh,lel,fe,color,img2 = len(img),len(img[0]),[],[],list(chain.from_iterable(img))
     print(img.shape)
     lee = len(img2)
@@ -26,7 +26,7 @@ def fl_xz(wenjian,outwenjian,shuliang,jingdu,boduan):
         bb[i1]=[]
     ll1,dd,j=list(range(shuliang)),list(range(shuliang)),0
 
-        while True:
+    while True:
         newimg=[]
         for i2 in range(shuliang):
             dd[i2] = sum((img1 - fe[i2])**2,1)
@@ -58,4 +58,5 @@ def fl_xz(wenjian,outwenjian,shuliang,jingdu,boduan):
     end = time.time()
     print("完成分类",'运行时间: %s S'%(end-star))
 
-# fl_xz('rh2.tif','rh2_21.tif',6,1,[2,3,4,5])
+# fl_xz('rh2.tif','rh2_21.tif',3,1,[1,2,3])
+fl_xz('../../public/0.png','../../public/1.png',3,1,[1,2,3])

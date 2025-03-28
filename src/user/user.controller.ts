@@ -42,7 +42,7 @@ export class UserController {
   }
 
   @Post('create')
-  createUser(@Body() body, @Session() session) {
+  createUser(@Body() body, @Session() session: Record<string, any>) {
     console.log(body, session.code)
     return { msg: 'ok', code: 200 }
   }
