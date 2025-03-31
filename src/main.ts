@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import { VersioningType } from '@nestjs/common'
+import { VersioningType, ValidationPipe, BadRequestException } from '@nestjs/common'
 import * as cookieParser from 'cookie-parser'
 import * as path from 'path'
 import * as session from 'express-session'
@@ -13,6 +13,18 @@ async function bootstrap() {
   const ip = process.env.SERVER_HOST
   // app.enableVersioning({ type: VersioningType.URI })
   // app.setGlobalPrefix('api')
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      exceptionFactory: errors => {
+        const result = errors.map(error => ({
+          field: error.property,
+          errors: Object.values(error.constraints),
+        }))
+        return new BadRequestException(result)
+      },
+    }),
+  )
 
   app.use(cookieParser()) // 使用 cookie-parser 中间件
   app.use(

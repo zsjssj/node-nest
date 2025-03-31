@@ -1,9 +1,9 @@
-class testA {
-  a: string
-  b: { q: string }
-  c: { w: string }
-  d: { ab: { q: string }; ac: { w: string } }
-  constructor(oa: string, ob: { q: string }, oc: { w: string }) {
+class testA<T> {
+  a: T
+  b: { q: T }
+  c: { w: T }
+  d: { ab: { q: T }; ac: { w: T } }
+  constructor(oa: T, ob: { q: T }, oc: { w: T }) {
     this.a = oa
     this.b = ob
     this.c = oc

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, Session } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, Session, HttpStatus } from '@nestjs/common'
 import { UserService } from './user.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
@@ -7,29 +7,30 @@ import { Request, Response } from 'express'
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto)
+    const msg = this.userService.create(createUserDto)
+    return { msg, statusCode: HttpStatus.OK }
   }
 
-  @Get()
+  @Get('info')
   findAll() {
-    return this.userService.findAll()
+    return { msg: this.userService.findAll(), statusCode: HttpStatus.OK }
   }
 
-  @Get('/info/:id')
+  @Get('info/:id')
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id)
+    return { msg: this.userService.findOne(+id), statusCode: HttpStatus.OK }
   }
 
-  @Patch('/info/:id')
+  @Patch('info/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto)
+    return { msg: this.userService.update(+id, updateUserDto), statusCode: HttpStatus.OK }
   }
 
-  @Delete('/info/:id')
+  @Delete('info/:id')
   remove(@Param('id') id: string) {
-    return this.userService.remove(+id)
+    return { msg: this.userService.remove(+id), statusCode: HttpStatus.OK }
   }
 
   @Get('code')
@@ -38,12 +39,5 @@ export class UserController {
     session.code = captcha.text
     res.type('image/svg+xml')
     res.send(captcha.data)
-    console.log('/user/code', 1)
-  }
-
-  @Post('create')
-  createUser(@Body() body, @Session() session: Record<string, any>) {
-    console.log(body, session.code)
-    return { msg: 'ok', code: 200 }
   }
 }

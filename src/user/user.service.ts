@@ -6,6 +6,8 @@ import * as svgCaptcha from 'svg-captcha'
 @Injectable()
 export class UserService {
   create(createUserDto: CreateUserDto) {
+    // console.log('createUserDto', createUserDto)
+
     return 'This action adds a new user'
   }
 

@@ -2,35 +2,9 @@ import { rejects } from 'assert'
 import { Resolver } from 'dns'
 import { ReplaySubject } from 'rxjs'
 
-//1.this指向
-const a1 = 10
+//1.链式调用
 ;() => {
-  const a1 = 10
-  const aa = {
-    a1: 1111,
-    handleA1() {
-      const a2 = this.a1
-      console.log(this.a1, a2)
-    },
-    handleA2: () => {
-      //在箭头函数中，this指向调用者的this
-      // const a2 = this.a1
-      // console.log(this.a1, a2)
-    },
-  }
-  aa.handleA1()
-  aa.handleA2()
-}
-
-//2.判断是否空对象
-;() => {
-  const a1 = { a: 1, handleA1: () => {} }
-  console.log(Object.keys(a1), Reflect.ownKeys(a1))
-}
-
-//3.链式调用
-;() => {
-  function AClass1(num) {
+  function AClass1<T extends number>(num: T) {
     this.value = num
     this.add = function (num) {
       this.value += num
@@ -41,7 +15,7 @@ const a1 = 10
       return this
     }
   }
-  const res1 = new AClass1(10).add(10).sub(5)
+  const res1 = new AClass1(110).add(10).sub(5)
   console.log(res1.value)
   class AClass2 {
     value: number
@@ -212,22 +186,24 @@ const a1 = 10
 }
 
 //8.二进制位运算
-;() => {
+;(() => {
   const a1 = 0b111
-  const a2 = 0b000
+  const a2 = 0b100
   const a3 = a1 | a2
   const a4 = a1 & a2
   console.log(!!a3, !!a4)
   console.log(a3.toString(2), a4.toString(2))
-}
+  const a5 = 0b011 << 2
+  console.log('a5', a5.toString(2))
+})()
 
 //9.??空值合并运算符
 ;() => {
-  const a1 = null ?? 3
-  const a2 = undefined ?? 3
-  const a3 = '' ?? 3
-  const a4 = 0 ?? 3
-  console.log(a1, a2, a3, a4)
+  // const a1 = null ?? 3
+  // const a2 = undefined ?? 3
+  // const a3 = '' ?? 3
+  // const a4 = 0 ?? 3
+  // console.log(a1, a2)
 }
 //10.数组去重
 ;() => {
@@ -276,9 +252,9 @@ const a1 = 10
 }
 
 //12
-;(() => {
+;() => {
   const aa = new Map()
   aa.set('a', 1)
   aa.set('b', 2)
   console.log(aa.get('a'))
-})()
+}
