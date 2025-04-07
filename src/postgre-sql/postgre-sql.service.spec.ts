@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { PostgreSqlService } from './postgre-sql.service'
+import { Test, TestingModule } from '@nestjs/testing';
+import { PostgreSqlService } from './postgre-sql.service';
 
 describe('PostgreSqlService', () => {
-  let service: PostgreSqlService
+  let service: PostgreSqlService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [PostgreSqlService],
-    }).compile()
+    }).compile();
 
-    service = module.get<PostgreSqlService>(PostgreSqlService)
-  })
+    service = module.get<PostgreSqlService>(PostgreSqlService);
+  });
 
   it('should be defined', () => {
-    expect(service).toBeDefined()
-  })
-})
+    expect(service).toBeDefined();
+  });
+});

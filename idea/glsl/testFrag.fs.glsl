@@ -25,7 +25,7 @@ void main() {
       //   gl_FragColor = vec4(1.,1.,1.,.5); // 背景颜色
       // }
 
-      gl_FragColor = vec4(uv.x,0.0,uv.y,1.0); // 内圆的颜色
+      gl_FragColor = vec4(uv.xy,0.0,1.0); // 内圆的颜色
 
 }
 
