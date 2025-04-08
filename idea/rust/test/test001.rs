@@ -1,4 +1,4 @@
 fn main(){
-  let a = 19;
+  // let a:u32=-1;
   println!("Hello, world! {}", a);  
 }
