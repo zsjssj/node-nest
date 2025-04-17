@@ -1,11 +1,24 @@
-type type_obj = { a: number; b: string; c: boolean };
-function test1(obj: type_obj) {
-  obj.a = 11;
-  obj.b = '11';
-  obj.c = true;
-  obj = { a: 2, b: '2', c: false };
-  console.log(obj); // { a: 2, b: '2', c: false }
-}
-const obj: type_obj = { a: 1, b: '1', c: true };
-test1(obj);
-console.log(obj); // { a: 1, b: '1', c: true }
+(function () {
+  function toSetColor() {
+    const color = Math.random().toString(16).slice(2, 8);
+    return '#' + color;
+  }
+  let color = toSetColor();
+  console.log('color: ', color);
+
+  console.time('Map');
+  let map1 = new Map();
+  for (let i = 0; i < 100; i++) {
+    map1.set(`${i}`, toSetColor());
+    let a = map1.get(`${i}`);
+  }
+  console.timeEnd('Map');
+
+  console.time('Obj');
+  let obj1 = {};
+  for (let i = 0; i < 100; i++) {
+    obj1[`${i}`] = toSetColor();
+    let a = obj1[`${i}`];
+  }
+  console.timeEnd('Obj');
+})();

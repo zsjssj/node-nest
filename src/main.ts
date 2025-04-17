@@ -9,7 +9,8 @@ import * as path from 'path';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const port = process.env.SERVER_PORT ?? 3000;
-  const ip = process.env.SERVER_HOST ?? '0.0.0.0';
+  // const ip = process.env.SERVER_HOST ?? '0.0.0.0';
+  const ip = '0.0.0.0';
 
   // 注册全局异常过滤器
   app.useGlobalFilters(new HttpExceptionFilter());
@@ -45,7 +46,7 @@ async function bootstrap() {
     maxAge: 1000 * 60 * 60 * 24 * 30,
   });
 
-  await app.listen(port, ip);
+  await app.listen(port, '0.0.0.0');
   const url = await app.getUrl();
   console.log(`server服务地址: ${url}`);
 }
