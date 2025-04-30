@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostgreSqlModule } from './postgre-sql/postgre-sql.module';
 import { RoleModule } from './role/role.module';
 import { AuthModule } from './auth/auth.module';
+import { IceApiModule } from './ice-api/ice-api.module';
 
 const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`;
 
@@ -42,6 +43,7 @@ console.log(`当前环境变量文件: ${envFilePath}`);
       // keepConnectionAlive: true,
     }),
     PostgreSqlModule,
+    IceApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
