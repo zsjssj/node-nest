@@ -171,7 +171,7 @@ let administrations = [
       {
         objectId: '8e52ba674c87f6ef81b919d39d725ed3',
         createdAt: '2023-11-08T16:29:54.416221Z',
-        Node: { Id: 1294, ElementId: '1294', Labels: ['Administration'], Props: { companyKey: 'nott', createdAt: {}, name: '诺特', objectId: '8e52ba674c87f6ef81b919d39d725ed3' } },
+        Node: { Id: 1294, ElementId: '1294', Labels: ['Administration'], Props: { companyKey: 'esr', createdAt: {}, name: '诺特', objectId: '8e52ba674c87f6ef81b919d39d725ed3' } },
         name: '诺特',
         labels: ['Administration'],
         fullPath: '',
@@ -180,12 +180,12 @@ let administrations = [
         region: { name: '', objectId: '', adcode: 0, regionLevel: '', children: null, substation: null },
         ratedCurrent: 0,
         ratedPower: 0,
-        fieldMap: { companyKey: 'nott', createdAt: {}, name: '诺特', objectId: '8e52ba674c87f6ef81b919d39d725ed3' },
+        fieldMap: { companyKey: 'esr', createdAt: {}, name: '诺特', objectId: '8e52ba674c87f6ef81b919d39d725ed3' },
       },
       {
         objectId: '5cfb209e844637d4d6efb189fca79083',
         createdAt: '2023-11-17T16:28:22.087683Z',
-        Node: { Id: 1386, ElementId: '1386', Labels: ['Administration'], Props: { companyKey: 'test_wrl', createdAt: {}, name: 'w我的测试', objectId: '5cfb209e844637d4d6efb189fca79083' } },
+        Node: { Id: 1386, ElementId: '1386', Labels: ['Administration'], Props: { companyKey: 'su_dao', createdAt: {}, name: 'w我的测试', objectId: '5cfb209e844637d4d6efb189fca79083' } },
         name: 'w我的测试',
         labels: ['Administration'],
         fullPath: '',
@@ -194,7 +194,7 @@ let administrations = [
         region: { name: '', objectId: '', adcode: 0, regionLevel: '', children: null, substation: null },
         ratedCurrent: 0,
         ratedPower: 0,
-        fieldMap: { companyKey: 'test_wrl', createdAt: {}, name: 'w我的测试', objectId: '5cfb209e844637d4d6efb189fca79083' },
+        fieldMap: { companyKey: 'su_dao', createdAt: {}, name: 'w我的测试', objectId: '5cfb209e844637d4d6efb189fca79083' },
       },
       {
         objectId: '39b5d0ef15580d502211e1fd24caa0b8',
@@ -396,6 +396,469 @@ let lines = [
   },
 ];
 
+let towerTypeInfo = [
+  {
+    id: '5a87799bc4246dffe80591b091d7c9b6',
+    created_at: '2023-12-29T09:32:36.316576Z',
+    updated_at: '2023-12-29T09:32:36.316576Z',
+    deleted_at: null,
+    name: 'tower1',
+    filePath: 'deepgrid/towerType/tower1.glb',
+    terminalPoints: '{"1": {"x": 0, "y": -27, "z": 52}, "2": {"x": 0, "y": 0, "z": 52}, "3": {"x": 0, "y": 27, "z": 52}}',
+  },
+  {
+    id: '4a7538ca3b3aa2a872d4bc70b96301d4',
+    created_at: '2024-04-07T08:13:33.563264Z',
+    updated_at: '2024-04-07T08:13:33.563264Z',
+    deleted_at: null,
+    name: 'ZG2',
+    filePath: 'deepgrid/towerType/ZG2.glb',
+    terminalPoints: '{"1": {"x": 0, "y": -1.57348, "z": 9.77835}, "2": {"x": 0, "y": -1.55909, "z": 6.06274}, "3": {"x": 0, "y": 1.55909, "z": 6.06274}}',
+  },
+  {
+    id: '18057ce68ef06a87ab7d94b11f5882fd',
+    created_at: '2024-03-13T08:18:22.557527Z',
+    updated_at: '2024-03-13T08:18:22.557527Z',
+    deleted_at: null,
+    name: 'ZS2',
+    filePath: 'deepgrid/towerType/zs3.glb',
+    terminalPoints: '{"1": {"x": -0.012982, "y": 0.92151, "z": 8.61806}, "2": {"x": -0.012982, "y": -0.921504, "z": 7.48247}, "3": {"x": -0.012982, "y": 0.903358, "z": 7.48247}}',
+  },
+  {
+    id: 'e6e3e13c32bf3b48e867044285dd2eeb',
+    created_at: '2024-10-22T01:52:41.348994Z',
+    updated_at: '2024-10-22T01:52:41.348994Z',
+    deleted_at: null,
+    name: 'ZG3',
+    filePath: 'deepgrid/towerType/ZG3.glb',
+    terminalPoints:
+      '{"1": {"x": -0.002654, "y": -1.79015, "z": 8.62038}, "2": {"x": -0.002654, "y": 1.79015, "z": 8.62038}, "3": {"x": -0.002654, "y": -1.79015, "z": 6.60044}, "4": {"x": -0.002654, "y": 1.79015, "z": 6.60044}, "5": {"x": -0.002654, "y": -1.79015, "z": 4.5799}, "6": {"x": -0.002654, "y": 1.79015, "z": 4.5799}}',
+  },
+  {
+    id: '4e82016c8d3f7890f6f78ad82e6f2fd9',
+    created_at: '2024-12-05T02:17:25.880037Z',
+    updated_at: '2024-12-05T02:17:25.880037Z',
+    deleted_at: null,
+    name: 'DXG01',
+    filePath: 'deepgrid/towerType/DXG.glb',
+    terminalPoints: '{"1": {"x": 0, "y": -27, "z": 52}, "2": {"x": 0, "y": 0, "z": 52}, "3": {"x": 0, "y": 27, "z": 52}}',
+  },
+  {
+    id: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    created_at: '2024-03-13T08:15:47.132399Z',
+    updated_at: '2024-03-13T08:15:47.132399Z',
+    deleted_at: null,
+    name: 'ZB1',
+    filePath: 'deepgrid/towerType/B1.glb',
+    terminalPoints: '{"1": {"x": 0, "y": -2.05645, "z": 8.57217}, "2": {"x": 0, "y": 0, "z": 8.57217}, "3": {"x": 0, "y": 2.03055, "z": 8.57217}}',
+  },
+  {
+    id: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    created_at: '2024-03-13T08:18:44.104774Z',
+    updated_at: '2024-03-13T08:18:44.104774Z',
+    deleted_at: null,
+    name: 'ZS1',
+    filePath: 'deepgrid/towerType/zs1.glb',
+    terminalPoints: '{"1": {"x": -0.012982, "y": -0.92151, "z": 8.61806}, "2": {"x": -0.012982, "y": -0.921504, "z": 7.48247}, "3": {"x": -0.012982, "y": 0.903358, "z": 7.48247}}',
+  },
+  {
+    id: '3e94caf4dcad1aeaeb4f90054dd30756',
+    created_at: '2024-03-13T08:36:59.528286Z',
+    updated_at: '2024-03-13T08:36:59.528286Z',
+    deleted_at: null,
+    name: 'ZG1',
+    filePath: 'deepgrid/towerType/ZG1.glb',
+    terminalPoints: '{"1": {"x": -0.012982, "y": -0.92151, "z": 8.61806}, "2": {"x": -0.012982, "y": -0.921504, "z": 7.48247}, "3": {"x": -0.012982, "y": 0.903358, "z": 7.48247}}',
+  },
+];
+
+let towerList = [
+  {
+    id: '49023d27f9588207f52cd8eff8f24e24',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND6',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.669642, y: 26.611026 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 16,
+    orientation: 10,
+    index: 7,
+  },
+  {
+    id: 'f73850b66aac43370196679b20d961ea',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND2',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.67225, y: 26.60466 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 37,
+    orientation: -45,
+    index: 2,
+  },
+  {
+    id: 'dcd3a434b61d5b338eb5d8cf8c59cc15',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND16',
+    towerComponentId: '',
+    towerTypeId: '3e94caf4dcad1aeaeb4f90054dd30756',
+    coordinates: { x: 102.68041, y: 26.625175 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 23,
+    orientation: 100,
+    index: 17,
+  },
+  {
+    id: 'fec261314205baeeadab04cb4f61bb5d',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND14',
+    towerComponentId: '',
+    towerTypeId: '3e94caf4dcad1aeaeb4f90054dd30756',
+    coordinates: { x: 102.676239, y: 26.623127 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: 45,
+    index: 15,
+  },
+  {
+    id: 'd9edc70c2202fd401cd714ad05e961ee',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND1',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.673899, y: 26.602959 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 24,
+    orientation: -45,
+    index: 1,
+  },
+  {
+    id: '9c1dc8a9eb282c8e5bb55681e2cabb3b',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND18',
+    towerComponentId: '',
+    towerTypeId: '3e94caf4dcad1aeaeb4f90054dd30756',
+    coordinates: { x: 102.683508, y: 26.624777 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 15,
+    orientation: 100,
+    index: 19,
+  },
+  {
+    id: '34caed902ec33727ef971d6388e6edec',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND3',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.670913, y: 26.606042 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: -30,
+    index: 4,
+  },
+  {
+    id: 'fc2ad615dad1de61880c71c669c82f27',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND10',
+    towerComponentId: '',
+    towerTypeId: '3e94caf4dcad1aeaeb4f90054dd30756',
+    coordinates: { x: 102.67053, y: 26.620325 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 24,
+    orientation: 45,
+    index: 11,
+  },
+  {
+    id: '841029d1b02261fe19d54b47d9d1b3dc',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND12',
+    towerComponentId: '',
+    towerTypeId: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    coordinates: { x: 102.674559, y: 26.622302 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: 45,
+    index: 13,
+  },
+  {
+    id: 'c71d919a8df8e195ecb36bbbc4ea8830',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND8',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.670096, y: 26.615773 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 31,
+    orientation: 10,
+    index: 9,
+  },
+  {
+    id: '7759e2d9ddfe32045c21566987d27106',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND13',
+    towerComponentId: '',
+    towerTypeId: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    coordinates: { x: 102.675721, y: 26.622873 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 21,
+    orientation: 45,
+    index: 14,
+  },
+  {
+    id: 'b2a89b740910c17d2a0fde0a8d5c5b9e',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND17',
+    towerComponentId: '',
+    towerTypeId: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    coordinates: { x: 102.682498, y: 26.624906 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 36,
+    orientation: 100,
+    index: 18,
+  },
+  {
+    id: '0f9f67bde6584c16b9e2a8bcbb128b5d',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND9',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.670324, y: 26.618168 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: 10,
+    index: 10,
+  },
+  {
+    id: 'fe746c12a4ac25ebb3361a99b00e006e',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND7',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.669995, y: 26.614719 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: 10,
+    index: 8,
+  },
+  {
+    id: '2d91f04415f0cf53fac9dbeeb30eff15',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND15',
+    towerComponentId: '',
+    towerTypeId: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    coordinates: { x: 102.678509, y: 26.624241 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 25,
+    orientation: 45,
+    index: 16,
+  },
+  {
+    id: '438dbbd6c5025ee5fccd44eae9b34533',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND5',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.669933, y: 26.609935 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 18,
+    orientation: -30,
+    index: 6,
+  },
+  {
+    id: '3123beb911e5c901d5ff9ac04cafbe71',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND2+1',
+    towerComponentId: '',
+    towerTypeId: 'f9802d638d152d19c3a5b53b7c2da6eb',
+    coordinates: { x: 102.671823, y: 26.605102 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 34,
+    orientation: -45,
+    index: 3,
+  },
+  {
+    id: '9d2978380406cf870f31daa3333d3ada',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND4',
+    towerComponentId: '',
+    towerTypeId: '18057ce68ef06a87ab7d94b11f5882fd',
+    coordinates: { x: 102.670339, y: 26.608408 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 15,
+    orientation: -30,
+    index: 5,
+  },
+  {
+    id: '0a9b5e2f615dd1e87a7129ef8d9935b6',
+    created_at: '2024-01-16T03:34:33.070244Z',
+    updated_at: '2024-01-16T03:34:33.070244Z',
+    deleted_at: null,
+    name: 'ND11',
+    towerComponentId: '',
+    towerTypeId: 'd8b4a1f423a0e5041baeb2ae4a49f07b',
+    coordinates: { x: 102.6729, y: 26.621488 },
+    towerType: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, name: '', filePath: '', terminalPoints: null },
+    height: 36,
+    orientation: 45,
+    index: 12,
+  },
+];
+
+let wireByTower = [
+  {
+    id: '6dc6747d072648052a95ab5107163229',
+    created_at: '2024-05-08T07:10:46.850336Z',
+    updated_at: '2024-05-08T07:10:46.850336Z',
+    deleted_at: null,
+    splitWiresNum: 1,
+    circuitId: '1回',
+    phase: 'A',
+    samplePoints: null,
+    widths: null,
+    diameter: null,
+    terminalPoint: { x: -0.012982, y: -0.921504, z: 7.48247 },
+  },
+  {
+    id: 'cbff8e6b8772f748ea21a5a72ad97738',
+    created_at: '2024-05-08T07:10:46.850336Z',
+    updated_at: '2024-05-08T07:10:46.850336Z',
+    deleted_at: null,
+    splitWiresNum: 1,
+    circuitId: '1回',
+    phase: 'B',
+    samplePoints: null,
+    widths: null,
+    diameter: null,
+    terminalPoint: { x: -0.012982, y: -0.92151, z: 8.61806 },
+  },
+  {
+    id: '657d17620599d56ed876ee24da63eb77',
+    created_at: '2024-05-08T07:10:46.850336Z',
+    updated_at: '2024-05-08T07:10:46.850336Z',
+    deleted_at: null,
+    splitWiresNum: 1,
+    circuitId: '1回',
+    phase: 'C',
+    samplePoints: null,
+    widths: null,
+    diameter: null,
+    terminalPoint: { x: -0.012982, y: 0.903358, z: 7.48247 },
+  },
+];
+
+let wireUnbound = [
+  { id: 'fe4cf82cde42bc9b572051bb7c0e1e9e', created_at: '2025-04-22T07:21:37.249965Z', updated_at: '2025-04-22T07:21:37.249965Z', deleted_at: null, splitWiresNum: 12, circuitId: '21', phase: 'C', samplePoints: null, widths: null, diameter: null },
+  { id: 'fe4cf82cde42bc9b572051bb7c0e13fa', created_at: '2025-04-22T07:21:37.249965Z', updated_at: '2025-04-22T07:21:37.249965Z', deleted_at: null, splitWiresNum: 12, circuitId: '21', phase: 'C', samplePoints: null, widths: null, diameter: null },
+  { id: 'fe4cf82cde42bc9b572051bb7c0e18yh', created_at: '2025-04-22T07:21:37.249965Z', updated_at: '2025-04-22T07:21:37.249965Z', deleted_at: null, splitWiresNum: 12, circuitId: '21', phase: 'C', samplePoints: null, widths: null, diameter: null },
+  { id: 'fe4cf82cde42bc9b572051bb7c0e1mnf', created_at: '2025-04-22T07:21:37.249965Z', updated_at: '2025-04-22T07:21:37.249965Z', deleted_at: null, splitWiresNum: 12, circuitId: '21', phase: 'C', samplePoints: null, widths: null, diameter: null },
+  { id: 'fe4cf82cde42bc9b572051bb7c0e1bds', created_at: '2025-04-22T07:21:37.249965Z', updated_at: '2025-04-22T07:21:37.249965Z', deleted_at: null, splitWiresNum: 12, circuitId: '21', phase: 'C', samplePoints: null, widths: null, diameter: null },
+];
+
+let systemList = [
+  {
+    id: '22a0c218f23eda9b77a9a83a12f8f278',
+    towerId: 'f73850b66aac43370196679b20d961ea',
+    companyKey: ['deepsensing', 'esr', 'su_dao', 'huidong-sudao'],
+    relativeLocation: { x: 2, y: 3, z: 7 },
+    cmdId: 'DS_EITL_202400013',
+    sensors: [
+      { sensorType: 1, sensors: [{ id: '4f4e4437bb5c35ef20f2023a2413c1c9', cmdId: 'DS_EITL_202400013', systemId: '22a0c218f23eda9b77a9a83a12f8f278', index: 1, companykey: 'deepsensing', sensorType: 1, wireId: '', sn: '', appKey: '', appSecret: '' }] },
+      { sensorType: 10, sensors: [{ id: '5991dbda2711c4c22765f1112379d2a2', cmdId: 'DS_EITL_202400013', systemId: '22a0c218f23eda9b77a9a83a12f8f278', index: 1, companykey: 'deepsensing', sensorType: 10, wireId: '657d17620599d56ed876ee24da63eb77', sn: '', appKey: '', appSecret: '' }] },
+    ],
+  },
+  {
+    id: 'bb0096c868d09d450de9b3d36745198f',
+    towerId: 'f73850b66aac43370196679b20d961ea',
+    companyKey: ['deepsensing', 'esr', 'su_dao', 'huidong-sudao'],
+    relativeLocation: { x: 6, y: 8, z: 9 },
+    cmdId: 'DS_EITL_202400012',
+    sensors: [
+      { sensorType: 10, sensors: [{ id: 'b6ff8bfe956a954a3c711fde701bb717', cmdId: 'DS_EITL_202400012', systemId: 'bb0096c868d09d450de9b3d36745198f', index: 1, companykey: 'deepsensing', sensorType: 10, wireId: '657d17620599d56ed876ee24da63eb77', sn: '', appKey: '', appSecret: '' }] },
+      {
+        sensorType: 4,
+        sensors: [
+          { id: '8ceb93dd1a2d428c8fc70d487c760ff8', cmdId: 'DS_EITL_202400012', systemId: 'bb0096c868d09d450de9b3d36745198f', index: 2, companykey: 'deepsensing', sensorType: 4, wireId: '', sn: '', appKey: '', appSecret: '' },
+          { id: '3edf361da2ca79156d36c3f164c77fce', cmdId: 'DS_EITL_202400012', systemId: 'bb0096c868d09d450de9b3d36745198f', index: 1, companykey: 'deepsensing', sensorType: 4, wireId: '', sn: '', appKey: '', appSecret: '' },
+        ],
+      },
+    ],
+  },
+];
+
+let deviceBySystemList = [
+  {
+    id: '4f4e4437bb5c35ef20f2023a2413c1c9',
+    created_at: '2024-01-18T06:32:17.252305Z',
+    updated_at: '2024-01-18T06:32:17.252305Z',
+    deleted_at: null,
+    cmdId: 'DS_EITL_202400013',
+    sn: '',
+    systemId: '22a0c218f23eda9b77a9a83a12f8f278',
+    index: 1,
+    companykey: 'deepsensing',
+    sensorType: 1,
+    direction: false,
+    wireId: '',
+    wire: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, splitWiresNum: 0, circuitId: '', phase: '', samplePoints: null, widths: null, diameter: null },
+    companyKeys: ['deepsensing', 'esr'],
+    ezviz: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, phone: '', deviceSerial: '', sensorId: '' },
+  },
+  {
+    id: '5991dbda2711c4c22765f1112379d2a2',
+    created_at: '2024-06-07T03:00:29.102945Z',
+    updated_at: '2024-06-07T03:00:29.102945Z',
+    deleted_at: null,
+    cmdId: 'DS_EITL_202400013',
+    sn: '',
+    systemId: '22a0c218f23eda9b77a9a83a12f8f278',
+    index: 1,
+    companykey: 'deepsensing',
+    sensorType: 3,
+    direction: false,
+    wireId: '657d17620599d56ed876ee24da63eb77',
+    wire: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, splitWiresNum: 0, circuitId: '', phase: '', samplePoints: null, widths: null, diameter: null },
+    companyKeys: ['deepsensing'],
+    ezviz: { id: '', created_at: '0001-01-01T00:00:00Z', updated_at: '0001-01-01T00:00:00Z', deleted_at: null, phone: '', deviceSerial: '', sensorId: '' },
+  },
+];
+
 function generateRandomString(length: number): string {
   let result: string = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -436,14 +899,15 @@ export class IceApiService {
     return { data: aramType, msg: 'ok' };
   }
   getDeviceType() {
-    const deviceType = {
-      data: [
-        { sensorTypeName: '微气象监测', sensorType: 1, protocolType: 1, dataTypeMap: { '0': [1] }, alarmTypes: [12, 7, 6] },
-        { sensorTypeName: '杆塔倾斜监测', sensorType: 2, protocolType: 1, dataTypeMap: { '0': [2] }, alarmTypes: [8] },
-        { sensorTypeName: '微风振动', sensorType: 3, protocolType: 1, dataTypeMap: { '0': [3, 4, 217] }, alarmTypes: [14] },
-        { sensorTypeName: '导线舞动监测', sensorType: 5, protocolType: 1, dataTypeMap: { '0': [9] }, alarmTypes: [9] },
-      ],
-    };
+    const deviceType = [
+      { sensorTypeName: '微气象监测', sensorType: 1, protocolType: 1, dataTypeMap: { '0': [1] }, alarmTypes: [12, 7, 6] },
+      { sensorTypeName: '杆塔倾斜监测', sensorType: 2, protocolType: 1, dataTypeMap: { '0': [2] }, alarmTypes: [8] },
+      { sensorTypeName: '微风振动', sensorType: 3, protocolType: 1, dataTypeMap: { '0': [3, 4, 217] }, alarmTypes: [14] },
+      { sensorTypeName: '导线舞动监测', sensorType: 5, protocolType: 1, dataTypeMap: { '0': [9] }, alarmTypes: [9] },
+      { sensorTypeName: 'MP110', sensorType: 11, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
+      { sensorTypeName: '海康摄像头', sensorType: 21, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
+      { sensorTypeName: '通道可视化', sensorType: 9, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
+    ];
     return { data: deviceType, msg: 'ok' };
   }
   getAramRealTimeData(id: string) {
@@ -579,5 +1043,62 @@ export class IceApiService {
   }
   getLineList() {
     return { data: lines, msg: '操作成功' };
+  }
+  deleteLine(lineId: string) {
+    lines = lines.filter((item) => item.id !== lineId);
+    return { data: lineId, msg: '操作成功' };
+  }
+  getTowerType() {
+    return { data: towerTypeInfo, msg: '操作成功' };
+  }
+  getTowerList(lineId: string) {
+    console.log('lineId', lineId);
+    return { data: towerList, msg: '操作成功' };
+  }
+  getWireByTower(towerId: string) {
+    console.log('towerId', towerId);
+    return { data: wireByTower, msg: '操作成功' };
+  }
+  addTower(val: any[]) {
+    console.log('val', val);
+    const ids = val.map(() => generateRandomString(32));
+    return { data: ids, msg: '操作成功' };
+  }
+  addTowerLine(val: any[]) {
+    return { data: null, msg: '操作成功' };
+  }
+  editTowerLine(val: any) {
+    return { data: null, msg: '操作成功' };
+  }
+  getUnboundWire() {
+    return { data: wireUnbound, msg: '操作成功' };
+  }
+  addWire(val: { circuitId: string; phase: string; splitWiresNum: number }[]) {
+    const time = new Date().toISOString();
+    const ids = val.map((item) => {
+      let obj = { id: generateRandomString(32), created_at: time, updated_at: time, deleted_at: null, ...item, samplePoints: null, widths: null, diameter: null };
+      return obj;
+    });
+    wireUnbound = [...wireUnbound, ...ids];
+    return { data: ids, msg: '操作成功' };
+  }
+  getSystemByTower(towerId: string) {
+    return { data: systemList, msg: '操作成功' };
+  }
+  getDeviceBySystem(cmdId: string) {
+    console.log('cmdId', cmdId);
+    if (cmdId) return { data: deviceBySystemList, msg: '操作成功' };
+    else return { data: [], msg: '参数异常' };
+  }
+  addDevice(val: any) {
+    return { data: null, msg: '操作成功' };
+  }
+  editDevice(val: any) {
+    const num = Math.floor(Math.random() * 10);
+    return { data: null, msg: num < 5 ? '操作成功' : '操作失败' };
+  }
+  deleteDevice(val: any) {
+    const num = Math.floor(Math.random() * 10);
+    return { data: null, msg: num < 5 ? '操作成功' : '操作失败' };
   }
 }

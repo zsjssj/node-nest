@@ -79,9 +79,3 @@ export function useCurrentInstance() {
     proxy,
   };
 }
-
-// function aa({ a1 = 'zsj', a2 = 'ssje' }: { a1?: string; a2?: string }) {
-//   console.log('a1', a1);
-//   console.log('a2', a2);
-// }
-// aa({ a1: '121212121212' });

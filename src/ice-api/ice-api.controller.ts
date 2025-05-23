@@ -53,7 +53,7 @@ export class IceApiController {
   getCaptcha() {
     return { data: this.iceApiService.createCode(), msg: 'ok' };
   }
-  @Get('administrations/resources/token')
+  @Get('/company/resources/token')
   getAdministrations() {
     // throw new BadRequestException('请求错误');
     return this.iceApiService.getAdministrations();
@@ -99,5 +99,81 @@ export class IceApiController {
   async getLineList() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return this.iceApiService.getLineList();
+  }
+  @Delete('/lines/resources/:lineId')
+  async deleteLine(@Param('lineId') lineId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.deleteLine(lineId);
+  }
+  @Get('/towerType/resources')
+  async getTowerType() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getTowerType();
+  }
+  @Get('/towers/resources/:lineId')
+  async getTowerList(@Param('lineId') lineId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    return this.iceApiService.getTowerList(lineId);
+  }
+  @Get('wires/resources/:towerId')
+  async getWireByTower(@Param('towerId') towerId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getWireByTower(towerId);
+  }
+  @Post('/towers/resources')
+  async addTower(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.addTower(body);
+  }
+  @Post('/towerLineRelationships/resources')
+  async addTowerLine(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.addTowerLine(body);
+  }
+  @Put('/towers/resources')
+  async editTowerLine(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.editTowerLine(body);
+  }
+  @Get('/wires/resources/unbound')
+  async getUnboundWire() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getUnboundWire();
+  }
+  @Post('/wires/resources')
+  async addWire(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.addWire(body);
+  }
+
+  //获取塔下系统
+  @Get('/systems/resources/tower-id')
+  async getSystemByTower(@Query('towerId') towerId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return this.iceApiService.getSystemByTower(towerId);
+  }
+  //获取系统下的设备
+  @Get('/sensors/resources/cmd-id/:cmdId')
+  async getDeviceBySystem(@Param('cmdId') cmdId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return this.iceApiService.getDeviceBySystem(cmdId);
+  }
+  //添加设备
+  @Post('/sensors/resources')
+  async addDevice(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.addDevice(body);
+  }
+  //修改设备
+  @Put('/sensors/resources/id')
+  async editDevice(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.editDevice(body);
+  }
+  //删除设备
+  @Delete('/sensors/resources/ids')
+  async deleteDevice(@Body('ids') body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.deleteDevice(body);
   }
 }
