@@ -32,12 +32,12 @@ export class IceApiController {
     return this.iceApiService.remove(+id);
   }
 
-  @Get('/constant/aram/type')
+  @Get('/constant/resources/alarm-type')
   getAramType() {
     return this.iceApiService.getAramType();
     // throw new BadRequestException('请求错误');
   }
-  @Get('/constant/device/type')
+  @Get('/constant/resources/sensor-type')
   getDeviceType() {
     return this.iceApiService.getDeviceType();
     // throw new BadRequestException('请求错误');
@@ -175,5 +175,25 @@ export class IceApiController {
   async deleteDevice(@Body('ids') body: any) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return this.iceApiService.deleteDevice(body);
+  }
+
+  //获取当前用户信息
+  @Get('/users/resources')
+  async getCurrentUser() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getCurrentUser();
+  }
+
+  //获取完整的线路台账
+  @Get('/towerLineRelationships/resources/systems/:lineId')
+  async getCompleteLineList(@Param('lineId') lineId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getCompleteLineList(lineId);
+  }
+  //获取塔台控制记录
+  @Post('/controlLog/resources/page')
+  async getTowerControlRecord(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getTowerControlRecord(body);
   }
 }
