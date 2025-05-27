@@ -196,4 +196,18 @@ export class IceApiController {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return this.iceApiService.getTowerControlRecord(body);
   }
+
+  //获取token
+  @Get('ezviz/resources/access-token/:deviceId')
+  async getEzvizAccessToken(@Param('deviceId') deviceId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getEzvizAccessToken(deviceId);
+  }
+
+  //查询数据
+  @Post('datas/resources/system-id')
+  async getDataByDeviceType(@Body() body: Parameters<typeof this.iceApiService.getDataByDeviceType>[0]) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getDataByDeviceType(body);
+  }
 }

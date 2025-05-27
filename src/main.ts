@@ -46,7 +46,7 @@ async function bootstrap() {
     maxAge: 1000 * 60 * 60 * 24 * 30,
   });
 
-  await app.listen(port, '10.210.200.104');
+  await app.listen(port, '10.210.200.109');
   const url = await app.getUrl();
   console.log(`server服务地址: ${url}`);
 }
