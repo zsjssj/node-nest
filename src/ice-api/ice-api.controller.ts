@@ -53,7 +53,7 @@ export class IceApiController {
   getCaptcha() {
     return { data: this.iceApiService.createCode(), msg: 'ok' };
   }
-  @Get('/company/resources/token')
+  @Get('/company/resources/tree')
   getAdministrations() {
     // throw new BadRequestException('请求错误');
     return this.iceApiService.getAdministrations();
@@ -158,6 +158,13 @@ export class IceApiController {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return this.iceApiService.getDeviceBySystem(cmdId);
   }
+  //获取所有设备
+  @Get('/sensors/resources')
+  async getAllDevice() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getAllDevice();
+  }
+
   //添加设备
   @Post('/sensors/resources')
   async addDevice(@Body() body: any) {
@@ -209,5 +216,31 @@ export class IceApiController {
   async getDataByDeviceType(@Body() body: Parameters<typeof this.iceApiService.getDataByDeviceType>[0]) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return this.iceApiService.getDataByDeviceType(body);
+  }
+
+  //设置海康相机参数配置
+  @Post('ezviz/resources/monitor')
+  async getEzvizMonitor(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.postEzvizMonitor(body);
+  }
+
+  //获取电机硬件的参数
+  @Get('/electric-machine-control/resources/:cmdId')
+  async getMotorHardware(@Param('cmdId') cmdId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getMotorHardware();
+  }
+  //获取电机参数【服务器存的】
+  @Get('/electric-machine-control/resources/form/:cmdId')
+  async getMotorParams(@Param('cmdId') cmdId: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getMotorParams(cmdId);
+  }
+  //电机控制
+  @Post('/electric-machine-control/resources')
+  async postMotorControl(@Body() body: any) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.postMotorControl(body);
   }
 }

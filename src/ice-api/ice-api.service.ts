@@ -157,7 +157,38 @@ let roleList = [
   { id: 'b51f710a2408ea3c1ed3aabf18658b0c', created_at: '2025-03-31T10:10:17.790949Z', updated_at: '2025-03-31T10:10:17.790949Z', deleted_at: null, roleName: '默认角色', roleKey: 'default', defaultRouter: 'dashboard', UserCompanyRoles: null },
   { id: '1c513277d53004db04999d4a82c11ba6', created_at: '2025-04-01T02:06:03.598845Z', updated_at: '2025-04-01T02:06:03.598845Z', deleted_at: null, roleName: '超级管理员', roleKey: 'admin', defaultRouter: 'dashboard', UserCompanyRoles: null },
 ];
-
+const deviceType = [
+  { sensorTypeName: '微气象监测', sensorType: 1, protocolType: 1, dataTypeMap: { '0': [1] }, alarmTypes: [12, 7, 6] },
+  { sensorTypeName: '杆塔倾斜监测', sensorType: 2, protocolType: 1, dataTypeMap: { '0': [2] }, alarmTypes: [8] },
+  { sensorTypeName: '微风振动', sensorType: 3, protocolType: 1, dataTypeMap: { '0': [3, 4, 217] }, alarmTypes: [14] },
+  { sensorTypeName: '导线舞动监测', sensorType: 5, protocolType: 1, dataTypeMap: { '0': [9] }, alarmTypes: [9] },
+  { sensorTypeName: '故障信息', sensorType: 6, protocolType: 1, dataTypeMap: { '0': [194] }, alarmTypes: null },
+  { sensorTypeName: '耐张线夹温度监测', sensorType: 7, protocolType: 1, dataTypeMap: { '0': [216] }, alarmTypes: [11] },
+  { sensorTypeName: '电缆负荷监测', sensorType: 8, protocolType: 1, dataTypeMap: { '0': [215] }, alarmTypes: [10] },
+  { sensorTypeName: '通道可视化', sensorType: 9, protocolType: 1, dataTypeMap: { '0': [225] }, alarmTypes: null },
+  { sensorTypeName: '设备状态', sensorType: 10, protocolType: 1, dataTypeMap: { '0': [213] }, alarmTypes: [3] },
+  { sensorTypeName: '导线全景监测', sensorType: 11, protocolType: 1, dataTypeMap: { '0': [226] }, alarmTypes: [5, 13, 10] },
+  { sensorTypeName: '覆冰监测', sensorType: 4, protocolType: 1, dataTypeMap: { '0': [7] }, alarmTypes: [2] },
+  { sensorTypeName: '泄露电流', sensorType: 12, protocolType: 1, dataTypeMap: { '0': [218, 219] }, alarmTypes: null },
+  { sensorTypeName: 'PSU12', sensorType: 13, protocolType: 1, dataTypeMap: { '0': [220, 168] }, alarmTypes: null },
+  { sensorTypeName: 'RTK', sensorType: 14, protocolType: 1, dataTypeMap: { '0': [12] }, alarmTypes: null },
+  { sensorTypeName: 'RTK图像', sensorType: 20, protocolType: 1, dataTypeMap: { '0': [177, 179, 180, 181, 182, 185] }, alarmTypes: null },
+  { sensorTypeName: '金具状态', sensorType: 15, protocolType: 1, dataTypeMap: { '0': [221] }, alarmTypes: null },
+  { sensorTypeName: '故障电流', sensorType: 16, protocolType: 1, dataTypeMap: { '0': [234, 235] }, alarmTypes: null },
+  { sensorTypeName: '地线监测', sensorType: 17, protocolType: 1, dataTypeMap: { '0': [241, 243, 242] }, alarmTypes: null },
+  { sensorTypeName: '导线状态检测', sensorType: 18, protocolType: 1, dataTypeMap: { '0': [222] }, alarmTypes: null },
+  { sensorTypeName: '电机', sensorType: 19, protocolType: 1, dataTypeMap: { '0': [236, 223] }, alarmTypes: null },
+  { sensorTypeName: '海康摄像头', sensorType: 21, protocolType: 1, dataTypeMap: { '0': [244] }, alarmTypes: null },
+  { sensorTypeName: '断路器', sensorType: 22, protocolType: 1, dataTypeMap: { '0': [237, 169] }, alarmTypes: null },
+  { sensorTypeName: '弧垂', sensorType: 23, protocolType: 1, dataTypeMap: { '0': [5] }, alarmTypes: null },
+  { sensorTypeName: '风偏', sensorType: 24, protocolType: 1, dataTypeMap: { '0': [8] }, alarmTypes: null },
+  { sensorTypeName: '导线舞动轨迹', sensorType: 25, protocolType: 1, dataTypeMap: { '0': [10] }, alarmTypes: null },
+  { sensorTypeName: '导线覆冰厚度', sensorType: 26, protocolType: 1, dataTypeMap: { '0': [13] }, alarmTypes: null },
+  { sensorTypeName: '环境温湿度', sensorType: 27, protocolType: 1, dataTypeMap: { '0': [14] }, alarmTypes: null },
+  { sensorTypeName: '心跳', sensorType: 28, protocolType: 1, dataTypeMap: { '0': [193] }, alarmTypes: null },
+  { sensorTypeName: '故障定位', sensorType: 29, protocolType: 2, dataTypeMap: { '1': [1, 4, 3, 5, 9], '5': [1, 5, 2, 7] }, alarmTypes: null },
+  { sensorTypeName: '电机2.0', sensorType: 30, protocolType: 1, dataTypeMap: { '0': [19] }, alarmTypes: null },
+];
 let administrations = {
   id: '1111111',
   created_at: '0001-01-01T00:00:00Z',
@@ -899,43 +930,12 @@ let ledger = {
       },
       systemList: [
         {
-          id: 'fe74e2369215dc7fcbce013009505675',
-          towerId: 'a613eb1a7f9326ca4d18c13d11f9c378',
-          companyKey: ['esr', 'deepsensing', 'atm_91430102MA4TBKNYX0'],
-          relativeLocation: { x: 6, y: 8, z: 9 },
-          cmdId: 'DS_EITL_202400092',
-          sensors: [
-            { sensorType: 19, sensors: [{ id: 'e2fcb547e0984b340ca4dfc7e61162e1', cmdId: 'DS_EITL_202400092', systemId: 'fe74e2369215dc7fcbce013009505675', index: 1, companykey: 'deepsensing', sensorType: 19, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            { sensorType: 22, sensors: [{ id: '61781c2a010888f382818c15fb9480c8', cmdId: 'DS_EITL_202400092', systemId: 'fe74e2369215dc7fcbce013009505675', index: 1, companykey: 'deepsensing', sensorType: 22, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            {
-              sensorType: 21,
-              sensors: [
-                {
-                  id: '7adb0e20bcba5b82f36828ee29562156',
-                  cmdId: 'DS_EITL_202400092',
-                  systemId: 'fe74e2369215dc7fcbce013009505675',
-                  index: 1,
-                  companykey: 'deepsensing',
-                  sensorType: 21,
-                  wireId: '3657596dddec389ab9f38765076223c2',
-                  sn: 'FV0809955',
-                  appKey: 'cdb1c76588504e2596d5e27aae7ff4f5',
-                  appSecret: '23126810390583972a6d665e49ff7b3e',
-                },
-              ],
-            },
-            { sensorType: 1, sensors: [{ id: '0c0b7ecd74e74956e95d81d025c471c3', cmdId: 'DS_EITL_202400092', systemId: 'fe74e2369215dc7fcbce013009505675', index: 1, companykey: 'deepsensing', sensorType: 1, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-          ],
-        },
-        {
           id: 'b06c9eec4822880b18cd52a8aa16e8fb',
           towerId: 'a613eb1a7f9326ca4d18c13d11f9c378',
           companyKey: ['esr', 'deepsensing', 'atm_91430102MA4TBKNYX0'],
           relativeLocation: { x: 6, y: 8, z: 9 },
           cmdId: 'DS_EITL_202400093',
           sensors: [
-            { sensorType: 22, sensors: [{ id: 'a7586c60bbb794712543427d1dd701b8', cmdId: 'DS_EITL_202400093', systemId: 'b06c9eec4822880b18cd52a8aa16e8fb', index: 1, companykey: 'deepsensing', sensorType: 22, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            { sensorType: 1, sensors: [{ id: '53d8a9cd895846837b70c88c3de38ed0', cmdId: 'DS_EITL_202400093', systemId: 'b06c9eec4822880b18cd52a8aa16e8fb', index: 1, companykey: 'deepsensing', sensorType: 1, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
             {
               sensorType: 21,
               sensors: [
@@ -953,48 +953,73 @@ let ledger = {
                 },
               ],
             },
-            { sensorType: 19, sensors: [{ id: 'ab839f0d799c10fb028b5c2a8320c865', cmdId: 'DS_EITL_202400093', systemId: 'b06c9eec4822880b18cd52a8aa16e8fb', index: 1, companykey: 'deepsensing', sensorType: 19, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-          ],
-        },
-        {
-          id: '64956ea5cdea0a88e4fc3ff000edd0ec',
-          towerId: 'a613eb1a7f9326ca4d18c13d11f9c378',
-          companyKey: ['esr', 'deepsensing', 'atm_91430102MA4TBKNYX0'],
-          relativeLocation: { x: 6, y: 8, z: 9 },
-          cmdId: 'DS_EITL_202400094',
-          sensors: [
-            { sensorType: 22, sensors: [{ id: '8c6bdd93646b813a5bce06470b3553f1', cmdId: 'DS_EITL_202400094', systemId: '64956ea5cdea0a88e4fc3ff000edd0ec', index: 1, companykey: 'deepsensing', sensorType: 22, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            { sensorType: 19, sensors: [{ id: '2286fd170f7b64c2c13245a70207b4b5', cmdId: 'DS_EITL_202400094', systemId: '64956ea5cdea0a88e4fc3ff000edd0ec', index: 1, companykey: 'deepsensing', sensorType: 19, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
             {
-              sensorType: 21,
+              sensorType: 1,
               sensors: [
                 {
-                  id: '7f6f31676d30800b802b6072ff4a6696',
-                  cmdId: 'DS_EITL_202400094',
-                  systemId: '64956ea5cdea0a88e4fc3ff000edd0ec',
+                  id: '47f81f43b32550d950338446383f10ce',
+                  cmdId: 'DS_EITL_202400093',
+                  systemId: 'b06c9eec4822880b18cd52a8aa16e8fb',
                   index: 1,
                   companykey: 'deepsensing',
-                  sensorType: 21,
+                  sensorType: 1,
                   wireId: '3657596dddec389ab9f38765076223c2',
-                  sn: 'FU1733688',
+                  sn: 'FS8501884',
                   appKey: 'cdb1c76588504e2596d5e27aae7ff4f5',
                   appSecret: '23126810390583972a6d665e49ff7b3e',
                 },
               ],
             },
-            { sensorType: 1, sensors: [{ id: '278724766d5d4c9332d0aedc772b9ce6', cmdId: 'DS_EITL_202400094', systemId: '64956ea5cdea0a88e4fc3ff000edd0ec', index: 1, companykey: 'deepsensing', sensorType: 1, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
           ],
         },
+      ],
+    },
+    {
+      pointId: 'a613eb1a7f9326ca4d18c13d11f9c370',
+      name: 'test2',
+      position: [115.579986, 37.294554, -89],
+      pointType: '',
+      height: 81,
+      index: 1,
+      filePath:
+        'https://deepsensing-1307225140.cos.ap-shanghai.myqcloud.com/deepgrid/towerType/tower1.glb?x-cos-security-token=gnw80WfGJM19zW2NgRcLYv0Hk4qtKLIa8652cef6c01c5492af038b8b6e9f489eMd5WRSbwEMe52NJjLlqOODIirE792BtCsUCUilhvmjON9Ifw1sqPmtp11YBrFyrHxUgGX2sfSu-3_xQ-nAeS8VrF32mljwj7XRQoAqn8Lg7iJB1ovAm4tjCeUcZgmYaZkf2pD-KsAj8W01jjQJPFai2TnOpYnIQoJqxhbGf74IDY4CCAiag-cotF0mGK_1QIDW6ofLouBFA9vRunkFtwBsgJUVS3X6r5HqRRw-x1hLVTBmCdkAfQ0-X7kADO-tPIb8HM39eLXLU-WK603V1PuA1FHk8sXwFJEPDf44oJE6wzKYhRz5fvaVd-iUHanjWh\u0026q-sign-algorithm=sha1\u0026q-ak=AKIDEV3fjZ481XyR2P81hDPrm2tX3LGxbchs7mVNkxTog8KNDz7892M2tCJl4T1QjmUj\u0026q-sign-time=1748311556%3B1748315156\u0026q-key-time=1748311556%3B1748315156\u0026q-header-list=host\u0026q-url-param-list=x-cos-security-token\u0026q-signature=5b1e8d81bbf75cc59704ff32cd036afb67601ad5',
+      wireInfo: {
+        '1': {
+          id: '3657596dddec389ab9f38765076223c2',
+          created_at: '2024-12-24T07:20:38.513679Z',
+          updated_at: '2024-12-24T07:20:38.513679Z',
+          deleted_at: null,
+          splitWiresNum: 1,
+          circuitId: '1回',
+          phase: 'A',
+          samplePoints: null,
+          widths: null,
+          diameter: null,
+          xyzPoint: { x: 0, y: -27, z: 52 },
+        },
+        '2': {
+          id: 'dbc026568e37b87420c9ed0d35f53748',
+          created_at: '2024-12-24T07:20:38.513679Z',
+          updated_at: '2024-12-24T07:20:38.513679Z',
+          deleted_at: null,
+          splitWiresNum: 1,
+          circuitId: '1回',
+          phase: 'C',
+          samplePoints: null,
+          widths: null,
+          diameter: null,
+          xyzPoint: { x: 0, y: 0, z: 52 },
+        },
+      },
+      systemList: [
         {
-          id: '044c54d9919fee5915f5daa4bf93bbae',
+          id: 'fe74e2369215dc7fcbce013009505674',
           towerId: 'a613eb1a7f9326ca4d18c13d11f9c378',
           companyKey: ['esr', 'deepsensing', 'atm_91430102MA4TBKNYX0'],
           relativeLocation: { x: 6, y: 8, z: 9 },
-          cmdId: 'DS_EITL_202400095',
+          cmdId: 'DS_EITL_202400094',
           sensors: [
-            { sensorType: 22, sensors: [{ id: '85bac754b158bbf40c7045e9baa15994', cmdId: 'DS_EITL_202400095', systemId: '044c54d9919fee5915f5daa4bf93bbae', index: 1, companykey: 'deepsensing', sensorType: 22, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            { sensorType: 19, sensors: [{ id: '432d04fcd576f7477cd46f66b9aebaf1', cmdId: 'DS_EITL_202400095', systemId: '044c54d9919fee5915f5daa4bf93bbae', index: 1, companykey: 'deepsensing', sensorType: 19, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
-            { sensorType: 1, sensors: [{ id: '205024c435e3028e2a5e948cd9c8cbf0', cmdId: 'DS_EITL_202400095', systemId: '044c54d9919fee5915f5daa4bf93bbae', index: 1, companykey: 'deepsensing', sensorType: 1, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
+            { sensorType: 30, sensors: [{ id: 'e2fcb547e0984b340ca4dfc7e61162e1', cmdId: 'DS_EITL_202400092', systemId: 'fe74e2369215dc7fcbce013009505675', index: 1, companykey: 'deepsensing', sensorType: 30, wireId: '3657596dddec389ab9f38765076223c2', sn: '', appKey: '', appSecret: '' }] },
           ],
         },
       ],
@@ -1092,15 +1117,6 @@ export class IceApiService {
     return { data: aramType, msg: 'ok' };
   }
   getDeviceType() {
-    const deviceType = [
-      { sensorTypeName: '微气象监测', sensorType: 1, protocolType: 1, dataTypeMap: { '0': [1] }, alarmTypes: [12, 7, 6] },
-      { sensorTypeName: '杆塔倾斜监测', sensorType: 2, protocolType: 1, dataTypeMap: { '0': [2] }, alarmTypes: [8] },
-      { sensorTypeName: '微风振动', sensorType: 3, protocolType: 1, dataTypeMap: { '0': [3, 4, 217] }, alarmTypes: [14] },
-      { sensorTypeName: '导线舞动监测', sensorType: 5, protocolType: 1, dataTypeMap: { '0': [9] }, alarmTypes: [9] },
-      { sensorTypeName: 'MP110', sensorType: 11, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
-      { sensorTypeName: '海康摄像头', sensorType: 21, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
-      { sensorTypeName: '通道可视化', sensorType: 9, protocolType: 1, dataTypeMap: { '0': [11] }, alarmTypes: [11] },
-    ];
     return { data: deviceType, msg: 'ok' };
   }
   getAramRealTimeData(id: string) {
@@ -1117,16 +1133,7 @@ export class IceApiService {
   }
   createCode() {
     try {
-      const captcha = svgCaptcha.create({
-        size: 4,
-        ignoreChars: '0o1i',
-        noise: 2,
-        color: true,
-        fontSize: 50,
-        width: 100,
-        height: 40,
-        background: '#cc9966',
-      });
+      const captcha = svgCaptcha.create({ size: 4, ignoreChars: '0o1i', noise: 2, color: true, fontSize: 50, width: 100, height: 40, background: '#cc9966' });
       return captcha;
     } catch (error) {
       throw new BadRequestException('生成验证码失败');
@@ -1283,6 +1290,15 @@ export class IceApiService {
     if (cmdId) return { data: deviceBySystemList, msg: '操作成功' };
     else return { data: [], msg: '参数异常' };
   }
+  getAllDevice() {
+    return {
+      data: [
+        { index: 1, sensorType: 21, id: 'd210a2858ac70bc89edd24a90af8c71c', sn: 'FN5802557', cmdId: 'DS_EITL_202400081', companyKeys: ['deepeneing'], systemId: 'qweqeqwesdefasdawdadw' },
+        { index: 1, sensorType: 30, id: '2', sn: 'FN5802557', cmdId: 'DS_EITL_202400082', companyKeys: ['deepeneing'], systemId: 'ouytdxcnkfrvyauwa1293' },
+      ],
+      msg: '操作成功',
+    };
+  }
   addDevice(val: any) {
     return { data: null, msg: '操作成功' };
   }
@@ -1311,7 +1327,47 @@ export class IceApiService {
   getDataByDeviceType(val: { dataType: number; start: string; end: string; frameType: number; params?: Record<string, any>; protocolType: number; systemId: string }) {
     switch (val.dataType) {
       case 1: // 微气象监测
-        return { data: [], msg: '操作成功' };
+        return {
+          data: [
+            {
+              time: '2025-05-28T09:52:43Z',
+              cmdId: 'DS_EITL_202400013',
+              systemId: '22a0c218f23eda9b77a9a83a12f8f278',
+              sensorNum: null,
+              componentId: 'DS_EITL_202400013',
+              averageWindSpeed10min: 8.2,
+              averageWindDirection10min: 73,
+              maxWindSpeed: 8.2,
+              extremeWindSpeed: 8.2,
+              standardWindSpeed: 0,
+              airTemperature: 10.1,
+              humidity: 93,
+              airPressure: 731.2,
+              precipitation: 15.8,
+              precipitationIntensity: 1.58,
+              radiationIntensity: 0,
+            },
+            {
+              time: '2025-05-28T09:42:42Z',
+              cmdId: 'DS_EITL_202400013',
+              systemId: '22a0c218f23eda9b77a9a83a12f8f278',
+              sensorNum: null,
+              componentId: 'DS_EITL_202400013',
+              averageWindSpeed10min: 8.2,
+              averageWindDirection10min: 72,
+              maxWindSpeed: 8.2,
+              extremeWindSpeed: 8.2,
+              standardWindSpeed: 0,
+              airTemperature: 10.1,
+              humidity: 92,
+              airPressure: 731.2,
+              precipitation: 15.6,
+              precipitationIntensity: 1.5600001,
+              radiationIntensity: 0,
+            },
+          ],
+          msg: '操作成功',
+        };
       case 11: // 海康摄像头-照片
         //拿public的静态图片做测试
         const list = [
@@ -1323,6 +1379,40 @@ export class IceApiService {
           { pictureUrl: 'http://localhost:3001/image.png' },
         ];
         return { data: { pageSize: 10, page: 1, total: 10, list }, msg: '操作成功' };
+      case 19: // 电机2.0
+        return { data: [{ motorState: 255 }], msg: '操作成功' }; // 返回空数据
     }
+  }
+  postEzvizMonitor(val: Record<string, string>) {
+    console.log('val', val);
+    return { data: null, msg: '操作成功' };
+  }
+  getMotorHardware() {
+    return {
+      data: {
+        motorRunTime: 20,
+        sensorNo: 255,
+        sensorType: 30,
+        setMotorMode: 255,
+        wireFrequency: 18,
+      },
+      msg: '操作成功',
+    };
+  }
+  getMotorParams(val: string) {
+    return {
+      data: {
+        motorRunTime: 20,
+        sensorNo: 255,
+        sensorType: 30,
+        setMotorMode: 255,
+        wireFrequency: 18,
+      },
+      msg: '操作成功',
+    };
+  }
+  postMotorControl(val: any) {
+    console.log('电机控制参数', val);
+    return { data: null, msg: '操作成功' };
   }
 }
