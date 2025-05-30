@@ -189,28 +189,30 @@ const deviceType = [
   { sensorTypeName: '故障定位', sensorType: 29, protocolType: 2, dataTypeMap: { '1': [1, 4, 3, 5, 9], '5': [1, 5, 2, 7] }, alarmTypes: null },
   { sensorTypeName: '电机2.0', sensorType: 30, protocolType: 1, dataTypeMap: { '0': [19] }, alarmTypes: null },
 ];
-let administrations = {
-  id: '1111111',
-  created_at: '0001-01-01T00:00:00Z',
-  updated_at: '0001-01-01T00:00:00Z',
-  deleted_at: null,
-  companyKey: 'deepsensing',
-  name: '清蓉深瞳',
-  description: '',
-  regionId: 0,
-  parentCompanys: null,
-  UserRoles: null,
-  Region: {
-    ID: 0,
-    CreatedAt: '0001-01-01T00:00:00Z',
-    UpdatedAt: '0001-01-01T00:00:00Z',
-    DeletedAt: null,
-    name: '',
-    adcode: 0,
-    regionLevel: '',
+let administrations = [
+  {
+    id: '1111111',
+    created_at: '0001-01-01T00:00:00Z',
+    updated_at: '0001-01-01T00:00:00Z',
+    deleted_at: null,
+    companyKey: 'deepsensing',
+    name: '清蓉深瞳',
+    description: '',
+    regionId: 0,
+    parentCompanys: null,
+    UserRoles: null,
+    Region: {
+      ID: 0,
+      CreatedAt: '0001-01-01T00:00:00Z',
+      UpdatedAt: '0001-01-01T00:00:00Z',
+      DeletedAt: null,
+      name: '',
+      adcode: 0,
+      regionLevel: '',
+    },
+    Children: null,
   },
-  Children: null,
-};
+];
 
 let lines = [
   {
@@ -1414,5 +1416,9 @@ export class IceApiService {
   postMotorControl(val: any) {
     console.log('电机控制参数', val);
     return { data: null, msg: '操作成功' };
+  }
+  getIceLine(val: string) {
+    console.log('获取冰线数据', val);
+    return { data: ledger, msg: '操作成功' };
   }
 }

@@ -243,4 +243,10 @@ export class IceApiController {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return this.iceApiService.postMotorControl(body);
   }
+  //获取覆冰线路信息
+  @Get('/lines/resources/freezing')
+  async getIceLine(@Query('companyKey') companyKey: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return this.iceApiService.getIceLine(companyKey);
+  }
 }
