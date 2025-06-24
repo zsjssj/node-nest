@@ -1,17 +1,17 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
 
-@Catch()
+@Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-  catch(exception: unknown, host: ArgumentsHost) {
+  catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
+    const status = exception.getStatus();
+
     // 处理路由不存在的情况
     if (exception instanceof HttpException) {
-      const status = exception.getStatus();
       const exceptionResponse = exception.getResponse();
-
       response.status(status).json({
         statusCode: status,
         timestamp: new Date().toISOString(),
@@ -27,5 +27,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
         message: '服务器内部错误',
       });
     }
+
+    // response.status(status).json({
+    //   statusCode: status,
+    //   timestamp: new Date().toISOString(),
+    //   path: request.url,
+    // });
   }
 }

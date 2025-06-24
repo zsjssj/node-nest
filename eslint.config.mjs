@@ -29,10 +29,7 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
-      '@typescript-eslint/no-unsafe-argument': 'warn',
-      // '@typescript-eslint/no-unsafe-call': 'off',
-      // '@typescript-eslint/no-unsafe-assignment': 'off',
-      'prettier/prettier': ['error', { singleQuote: true, trailingComma: 'all', printWidth: 300, semi: true, arrowParens: 'always', endOfLine: 'auto' }], // 强制使用 auto 结尾
+      '@typescript-eslint/no-unsafe-argument': 'warn'
     },
   },
 );
