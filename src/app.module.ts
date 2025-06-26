@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { PostgreSqlModule } from './sql-postgres/postgre-sql.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       dropSchema: false,
       // keepConnectionAlive: true,
     }),
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
