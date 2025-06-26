@@ -25,15 +25,11 @@ export class RoleService {
     roleData.key = createRoleDto.key; // 设置角色的key
     roleData.description = createRoleDto.description; // 设置角色描述
     roleData.permissions = createRoleDto.permissions ? JSON.stringify(createRoleDto.permissions) : undefined; // 设置权限列表
-    console.log('roleData', roleData);
-
     return this.roleRepository.save(roleData);
-    // return `This action returns all role`;
   }
 
   findAll() {
     return this.roleRepository.find();
-    // return `This action returns all role`;
   }
 
   async findOne(id: number) {
@@ -49,10 +45,17 @@ export class RoleService {
   }
 
   update(id: number, updateRoleDto: UpdateRoleDto) {
+    console.log('updateRoleDto', updateRoleDto);
+
     return `This action updates a #${id} role`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} role`;
+  async remove(id: number) {
+    // 使用 delete 方法删除角色
+    const result = await this.roleRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`未找到 ID 为 ${id} 的角色`);
+    }
+    return `已经删除 ID 为 ${id} 的角色`;
   }
 }
