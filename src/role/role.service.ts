@@ -8,10 +8,6 @@ import { generateRandomString } from '../common/utils/index';
 
 @Injectable()
 export class RoleService {
-  // constructor(
-  //   @InjectRepository(Role)
-  //   private roleRepository: Repository<Role>,
-  // ) {}
   constructor(
     @InjectRepository(Role)
     private roleRepository: Repository<Role>,
@@ -32,9 +28,8 @@ export class RoleService {
     return this.roleRepository.find();
   }
 
-  async findOne(id: number) {
-    // 使用 findOne 方法查找角色
-    const role = await this.roleRepository.findOne({ where: { id } });
+  async findOne(id: string) {
+    const role = await this.roleRepository.findOne({ where: { uid: id } }); // 使用 findOne 方法查找角色
     if (!role) {
       throw new NotFoundException(`未找到 ID 为 ${id} 的角色`);
     }
@@ -44,18 +39,25 @@ export class RoleService {
     return role;
   }
 
-  update(id: number, updateRoleDto: UpdateRoleDto) {
-    console.log('updateRoleDto', updateRoleDto);
-
-    return `This action updates a #${id} role`;
-  }
-
-  async remove(id: number) {
-    // 使用 delete 方法删除角色
-    const result = await this.roleRepository.delete(id);
-    if (result.affected === 0) {
+  async update(id: string, updateRoleDto: UpdateRoleDto) {
+    const role = await this.roleRepository.findOne({ where: { uid: id } }); // 使用 findOne 方法查找角色
+    if (!role) {
       throw new NotFoundException(`未找到 ID 为 ${id} 的角色`);
     }
-    return `已经删除 ID 为 ${id} 的角色`;
+    const roleData = new Role();
+    roleData.id = role.id; // 保留原有角色 ID
+    roleData.uid = id; // 设置角色 ID
+    roleData.description = updateRoleDto.description; // 更新角色描述
+    roleData.permissions = updateRoleDto.permissions ? JSON.stringify(updateRoleDto.permissions) : undefined; // 更新权限列表
+    roleData.updatedAt = new Date(); // 更新角色的更新时间
+    return this.roleRepository.save(roleData);
+  }
+
+  async remove(uid: string) {
+    const result = await this.roleRepository.delete(uid);
+    if (result.affected === 0) {
+      throw new NotFoundException(`未找到 ID 为 ${uid} 的角色`);
+    }
+    return `已经删除 ID 为 ${uid} 的角色`;
   }
 }
