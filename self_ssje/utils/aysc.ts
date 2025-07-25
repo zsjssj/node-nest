@@ -1,48 +1,25 @@
-type taskFunction = (a?: number) => void;
-//批量执行大量任务task不造成卡顿
-function runTask(task: taskFunction) {
-  return new Promise((resolve, reject) => {
-    _runTask(task, resolve);
-  });
-}
-function _runTask(task: taskFunction, callback: taskFunction) {
-  requestIdleCallback((deadline) => {
-    //判断距离渲染下一帧还有没时间，有时间：执行任务，没时间：选然后继续执行下一个任务
-    if (deadline.timeRemaining() > 0) {
-      task();
-      callback();
-    } else {
-      _runTask(task, callback);
-    }
-  });
-}
+// 批量执行大量任务不卡顿的解决方案。主要是判断距离下一次渲染是否还有时间，利用requestIdleCallback的特性，没有时间就不执行任务，有时间就执行任务。
+export function asyncLoop<T>(tasks: (() => Promise<T>)[], onComplete: (results: T[]) => void, batchSize = 10): void {
+  const results: T[] = [];
+  let currentIndex = 0;
 
-//封装一个线程池，用于处理大量任务，这个线程池每次最多只能处理两个任务，当一个任务执行完毕后，会立即执行下一个任务，直到所有任务执行完毕
-type functask = () => Promise<void>;
-class ThreadPool {
-  queue: functask[];
-  max: number;
-  count: number;
-  constructor() {
-    this.queue = [];
-    this.max = 2;
-    this.count = 0;
-  }
-  addTask(task: functask) {
-    this.queue.push(task);
-    this.runTask();
-  }
-  runTask() {
-    if (this.count >= this.max) {
+  function processBatch() {
+    if (currentIndex >= tasks.length) {
+      onComplete(results);
       return;
     }
-    const task = this.queue.shift();
-    if (task) {
-      this.count++;
-      task().then(() => {
-        this.count--;
-        this.runTask();
+    const endIndex = Math.min(currentIndex + batchSize, tasks.length);
+    const batch = tasks.slice(currentIndex, endIndex);
+    Promise.all(batch.map((task) => task()))
+      .then((res) => {
+        results.push(...res);
+        currentIndex += batchSize;
+        requestIdleCallback(processBatch);
+      })
+      .catch((error) => {
+        console.error('Error processing batch:', error);
+        onComplete(results); // Call onComplete even if there's an error
       });
-    }
   }
+  requestIdleCallback(processBatch);
 }

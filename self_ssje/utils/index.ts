@@ -32,16 +32,24 @@ export function throttle<T extends (...args: any[]) => any>(fn: T, delay: number
 }
 
 //5防抖
-export function debounce(func: (...args: any[]) => void, delay: number): (...args: any[]) => void {
-  let timer: NodeJS.Timeout | null;
-  return function (this: any, ...args: any[]) {
-    const context = this;
+// export function debounce(func: (...args: any[]) => void, delay: number): (...args: any[]) => void {
+//   let timer: NodeJS.Timeout | null;
+//   return function (...args: any[]) {
+//     if (timer) clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       func.apply(this, args);
+//       timer = null;
+//     }, delay);
+//   };
+// }
+export function debounce<T extends (...arg: any[]) => any>(func: T, delay: number = 500): T {
+  let timer: NodeJS.Timeout | null = null;
+  return function (..._args: Parameters<T>) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
-      func.apply(context, args);
-      timer = null;
+      func.apply(this, arguments);
     }, delay);
-  };
+  } as T;
 }
 
 //6转换科学计数为普通数字
