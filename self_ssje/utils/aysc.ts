@@ -2,7 +2,6 @@
 export function asyncLoop<T>(tasks: (() => Promise<T>)[], onComplete: (results: T[]) => void, batchSize = 10): void {
   const results: T[] = [];
   let currentIndex = 0;
-
   function processBatch() {
     if (currentIndex >= tasks.length) {
       onComplete(results);
