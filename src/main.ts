@@ -42,7 +42,7 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   let port = process.env.PORT || 3000;
-  await app.listen(port, '127.0.0.1');
+  await app.listen(port, '10.210.200.109');
   const url = await app.getUrl();
   console.log(`server服务运行在: ${url}`);
 }
